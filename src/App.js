@@ -9,6 +9,8 @@ import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
 import Contact from './Pages/Contact/Contact';
 import Blogs from './Pages/Blogs/Blogs';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -16,11 +18,13 @@ function App() {
       <Navbar>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/blogs" element={<Blogs/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       <ToastContainer/>
       </Navbar>

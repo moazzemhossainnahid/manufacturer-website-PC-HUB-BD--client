@@ -32,6 +32,7 @@ const Navbar = ({children}) => {
                 <ul class="menu menu-horizontal gap-2">
                 {/* <!-- Navbar menu content here --> */}
                 <li><NavLink to="/" className="rounded-lg">Home</NavLink></li>
+                <li><NavLink to="/dashboard" className="rounded-lg">Dashboard</NavLink></li>
                 <li><NavLink to="/about" className="rounded-lg">About</NavLink></li>
                 <li><NavLink to="/blogs" className="rounded-lg">Blogs</NavLink></li>
                 <li><NavLink to="/contact" className="rounded-lg">Contact</NavLink></li>
@@ -49,6 +50,7 @@ const Navbar = ({children}) => {
             <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
             {/* <!-- Sidebar content here --> */}
                 <li><NavLink to="/" className="rounded-lg">Home</NavLink></li>
+                <li><NavLink to="/dashboard" className="rounded-lg">Dashboard</NavLink></li>
                 <li><NavLink to="/about" className="rounded-lg">About</NavLink></li>
                 <li><NavLink to="/blogs" className="rounded-lg">Blogs</NavLink></li>
                 <li><NavLink to="/contact" className="rounded-lg">Contact</NavLink></li>

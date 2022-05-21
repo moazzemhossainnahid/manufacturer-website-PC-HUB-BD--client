@@ -4,7 +4,7 @@ import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useFirebase from '../../components/useFirebase';
 
-import image from '../../../images/PC-HUB-LOGO.png';
+import image from '../../../images/PC-HUB.png';
 
 
 const Navbar = ({children}) => {

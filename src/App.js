@@ -11,6 +11,8 @@ import Contact from './Pages/Contact/Contact';
 import Blogs from './Pages/Blogs/Blogs';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import NotFound from './Pages/NotFound/NotFound';
+import BookNow from './Pages/components/BookNow/BookNow';
+import Products from './Pages/Products/Products';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/blogs" element={<Blogs/>}/>
+        <Route path="/products" element={<Products/>}/>
+        <Route path="/product/:id" element={<BookNow/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/signup" element={<Signup/>}/>

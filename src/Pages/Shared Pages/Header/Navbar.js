@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useFirebase from '../../components/useFirebase';
 
 import image from '../../../images/PC-HUB.png';
+import avater from '../../../images/avatar.jpg';
 
 const Navbar = ({children}) => {
     const [clicked, setClicked] = useState(false);
@@ -52,6 +53,21 @@ const Navbar = ({children}) => {
                 
                 </label>
                 </div>
+                <div className="">
+                <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                        {
+                            user ? <img src={user?.photoURL} alt='' /> : <img src={avater} alt='' />
+                        }
+                        </div>
+                    </label>
+                    <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36">
+                        <li className='my-1'> <NavLink to="/profile">Profile</NavLink> </li>
+                        <li className='my-1'> <NavLink to="/settings">Settings</NavLink> </li>
+                    </ul>
+                    </div>
+                </div>
                 </ul>
             </div>
 
@@ -71,6 +87,21 @@ const Navbar = ({children}) => {
                 <li><NavLink to="/blogs" className="rounded-lg">Blogs</NavLink></li>
                 <li><NavLink to="/contact" className="rounded-lg">Contact</NavLink></li>
                 <li>{user ? <button onClick={handleSignOut} className="rounded-lg btn btn-outline btn-natural"><NavLink to="/signin" className="rounded-lg">SignOut</NavLink> </button>: <NavLink to="/signin" className="rounded-lg">Signin</NavLink>}</li>
+                <div className="">
+                <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                        {
+                            user ? <img src={user?.photoURL} alt='' /> : <img src={avater} alt='' />
+                        }
+                        </div>
+                    </label>
+                    <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36">
+                        <li className='my-1'> <NavLink to="/profile">Profile</NavLink> </li>
+                        <li className='my-1'> <NavLink to="/settings">Settings</NavLink> </li>
+                    </ul>
+                    </div>
+                </div>
             </ul>
             
         </div>

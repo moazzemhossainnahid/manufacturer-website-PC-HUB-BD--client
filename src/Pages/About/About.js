@@ -2,6 +2,7 @@ import React from 'react';
 
 import image1 from '../../images/nahid.jpg';
 import image2 from '../../images/pngtree-technology-background.jpg';
+import ProgressSlide from './ProgressSlide';
 const About = () => {
     return (
         <div>
@@ -74,6 +75,11 @@ const About = () => {
                 </div>
                 {/* Card code block end */}
             </div>
+            
+            <div className="">
+            
+                    <ProgressSlide/>
+                </div>
         </div>
     );
 };

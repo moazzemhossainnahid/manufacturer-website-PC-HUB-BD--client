@@ -85,6 +85,26 @@ const useFirebase = () => {
             toast.success("User SignOut Successfully", {position: "top-center"});
         })
     }
+
+
+
+    // ------------------------------------------------------------
+    const handlePurchase = (data) => {
+        const quantity = data.quantity;
+        const avQuantity = data.avQuantity;
+        const minOrder = data.minOrder;
+
+        if(quantity < minOrder){
+            toast.error(`Order At Least ${minOrder} Pcs`);
+            return;
+        }
+        if(quantity > avQuantity){
+            toast.error(`Order Processed Maximum ${avQuantity} Pcs`);
+            return;
+        }
+
+        reset();
+    }
     
     return {
         user,
@@ -96,7 +116,8 @@ const useFirebase = () => {
         handleGoogleSignin,
         handleGithubSignin,
         handleFacebookSignin,
-        handleSignOut
+        handleSignOut,
+        handlePurchase
     };
 };
 

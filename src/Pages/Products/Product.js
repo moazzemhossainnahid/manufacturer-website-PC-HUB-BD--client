@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Product = ({product}) => {
-    const {_id, name, imageURL, description, avQuantity, minOrder, price} = product;
+    const {_id, name, imageURL, description, avQuantity, price} = product;
     const navigate = useNavigate();
     return (
         <div className='mx-auto'>

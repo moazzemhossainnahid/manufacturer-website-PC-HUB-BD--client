@@ -10,7 +10,7 @@ import WhatWeMake from './WhatWeMake';
 const Home = () => {
     return (
         <div>
-            {/* <HomeSlider/> */}
+            <HomeSlider/>
             <HomeProducts/>
             <BusinessSummery/>
             <Reviews/>

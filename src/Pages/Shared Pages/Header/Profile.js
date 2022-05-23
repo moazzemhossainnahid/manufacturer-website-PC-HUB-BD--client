@@ -6,6 +6,7 @@ import avater from '../../../images/avatar.jpg';
 const Profile = () => {
     const {user, register, handleSubmit, handleUpdateProfile} = useFirebase();
     const [profile] = useProfile();
+    console.log(profile);
 
     
     return (

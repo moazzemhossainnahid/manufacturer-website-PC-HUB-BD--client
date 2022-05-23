@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Pages/Shared Pages/Header/Navbar';
 import PublicRoute from './Pages/components/Routes/PublicRoute';
 import PrivateRoute from './Pages/components/Routes/PrivateRoute';
+import RequireAuth from './Pages/components/RequireAuth';
 // import Signin from './Pages/Signin/Signin';
 // import Signup from './Pages/Signup/Signup';
 // import Home from './Pages/Home/Home';
@@ -28,7 +29,7 @@ function App() {
         }
         {
           PrivateRoute.map(({path, Component}, index) => (
-            <Route key={index} path={path} element={<Component/>}/>
+            <Route key={index} path={path} element={<RequireAuth><Component/></RequireAuth>}/>
           ))
         }
         {/* <Route path="/" element={<Home/>}/>

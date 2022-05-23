@@ -9,12 +9,12 @@ const HomeSlider = () => {
             {
                 sliderItem.map(item => (
                         
-                        <div class="carousel w-full">
-                        <div id="" class="carousel-item relative w-full">
-                        <img src={item} alt='' class="w-full"/>
-                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="" class="btn btn-circle">❮</a> 
-                        <a href="" class="btn btn-circle">❯</a>
+                        <div className="carousel w-full">
+                        <div id="" className="carousel-item relative w-full">
+                        <img src={item} alt='' className="w-full"/>
+                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="" className="btn btn-circle">❮</a> 
+                        <a href="" className="btn btn-circle">❯</a>
                         </div>
                         </div> 
                         </div>

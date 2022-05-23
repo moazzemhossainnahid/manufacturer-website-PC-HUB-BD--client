@@ -79,7 +79,7 @@ const About = () => {
             <div className="">
             
                     <ProgressSlide/>
-                </div>
+            </div>
         </div>
     );
 };

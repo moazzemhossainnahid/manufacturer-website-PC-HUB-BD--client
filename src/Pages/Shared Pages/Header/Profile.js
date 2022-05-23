@@ -1,38 +1,45 @@
 import React from 'react';
-import useFirebase from '../../components/useFirebase';
+import useFirebase from '../../../Hooks/useFirebase';
 
+import avater from '../../../images/avatar.jpg';
 const Profile = () => {
-    const {user} = useFirebase();
+    const {user, register, handleSubmit, handleUpdateProfile} = useFirebase();
+
+    if(user?.email === null){
+        return user.email = "This Users Email is Encrypted";
+    }
+
     return (
         <div>
-            <div class="h-full text-left">
+            <div className="h-full text-left">
 
-                <div class="border-b-2 block md:flex">
+                <div className="border-b-2 block md:flex">
 
-                    <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
-                        <div class="flex justify-between">
-                            <span class="text-xl font-semibold block">{user ? `${user?.displayName}'s Profile` : 'User Profile'} </span>
-                            <a href="!#" class="-mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</a>
+                    <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+                        <div className="flex justify-between">
+                            <span className="text-xl font-semibold block">{user ? `${user?.displayName}'s Profile` : 'User Profile'} </span>
+                            {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
+                            <label for="my-modal-3" className="-mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</label>
                         </div>
 
-                        <span class="text-gray-600">This information is secret so be careful</span>
-                        <div class="w-full p-8 mx-2 flex justify-center">
-                            <img id="showImage" class="max-w-xs w-32 items-center border" src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200" alt="" />
+                        <span className="text-gray-600">This information is secret so be careful</span>
+                        <div className="w-full h-fit p-8 mx-2 flex justify-center">
+                            <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? `${user?.photoURL}` : `${avater}`} alt="" />
                         </div>
                     </div>
 
-                    <div class="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
-                        <div class="rounded  shadow p-6">
-                            <div class="pb-6">
-                                <label for="name" class="font-semibold text-gray-700 block pb-1">Name</label>
-                                <div class="flex">
-                                    <input disabled id="username" class="border-1  rounded-r px-4 py-2 w-full" type="text" value={user?.displayName} />
+                    <div className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
+                        <div className="rounded  shadow p-6">
+                            <div className="pb-6">
+                                <label for="name" className="font-semibold text-gray-700 block pb-1">Name</label>
+                                <div className="flex">
+                                    <input disabled id="username" className="border-1  rounded-r px-4 py-2 w-full" type="text" value={user?.displayName} />
                                 </div>
                             </div>
-                            <div class="pb-4">
-                                <label for="about" class="font-semibold text-gray-700 block pb-1">Email</label>
-                                <input disabled id="email" class="border-1  rounded-r px-4 py-2 w-full" type="email" value={user?.email} />
-                                <span class="text-gray-600 pt-4 block opacity-70">Personal login information of your account</span>
+                            <div className="pb-4">
+                                <label for="about" className="font-semibold text-gray-700 block pb-1">Email</label>
+                                <input disabled id="email" className="border-1  rounded-r px-4 py-2 w-full" type="email" value={ user ? `${user?.email}` : `${user?.email}`} />
+                                <span className="text-gray-600 pt-4 block opacity-70">Personal login information of your account</span>
                             </div>
                         </div>
                     </div>
@@ -40,6 +47,27 @@ const Profile = () => {
                 </div>
 
             </div>
+
+
+            <div>
+            {/* <!-- The button to open modal --> */}
+            
+
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <div class="modal">
+            <div class="modal-box relative  bg-success">
+                <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <h3 class="text-lg font-bold">Please Update Your Profile Indormation</h3>
+                <form onSubmit={handleSubmit(handleUpdateProfile)} action="" className='py-3'>
+                <input {...register('displayName')} type="text" placeholder="Enter Your Name" className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
+                <input {...register('email')} type="email" placeholder="Enter Your Email" value={ user ? `${user?.email}` : `${user?.email}`} className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
+                <input {...register('photoURL')} type="file" placeholder="Enter Your Password" className="input bg-slate-100 my-2 input-ghost items-center w-full block mx-auto max-w-xs cursor-pointer border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" />
+                <input className='btn px-7 btn-secondary my-5 block mx-auto' type="submit" value="Save" />
+                </form> 
+            </div>
+            </div>
+        </div>
+
         </div>
     );
 };

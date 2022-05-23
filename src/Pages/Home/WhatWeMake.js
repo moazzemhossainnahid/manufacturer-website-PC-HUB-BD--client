@@ -48,7 +48,9 @@ const WhatWeMake = () => {
                     </div>
                     <div className="mt-6 flex">
                         <img tabIndex={0} className="w-48 h-48 block rounded-lg" src="https://i.ibb.co/GPpMsbr/Rectangle-12.png" alt="young girl with red hair" />
-                        <img tabIndex={0} className="w-48 md:w-72 h-56 block rounded-lg ml-6" src="https://i.ibb.co/VBcgkVL/Rectangle-11.png" alt="young girl with red hair" />
+                    </div>
+                    <div className="mt-6 flex">
+                        <img tabIndex={0} className="w-96 h-56 block rounded-lg ml-6" src="https://i.ibb.co/VBcgkVL/Rectangle-11.png" alt="young girl with red hair" />
                     </div>
                 </div>
             </div>

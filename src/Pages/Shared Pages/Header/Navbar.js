@@ -6,10 +6,12 @@ import useFirebase from '../../../Hooks/useFirebase';
 
 import image from '../../../images/PC-HUB.png';
 import avater from '../../../images/avatar.jpg';
+import useProfile from '../../../Hooks/useProfile';
 
 const Navbar = ({children}) => {
     const [clicked, setClicked] = useState(false);
     const {user, handleSignOut} = useFirebase();
+    const [profile] = useProfile();
     const navigate = useNavigate();
 
     return (
@@ -58,7 +60,7 @@ const Navbar = ({children}) => {
                     <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                         {
-                            user?.photoURL ? <img src={user?.photoURL} alt='' /> : <img src={avater} alt='' />
+                            user?.photoURL ? <img src={user?.photoURL} alt='' /> : <img src={avater} alt='' /> || profile?.photoURL ? <img src={profile?.photoURL} alt='' /> : <img src={avater} alt='' />
                         }
                         </div>
                     </label>

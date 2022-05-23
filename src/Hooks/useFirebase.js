@@ -128,7 +128,7 @@ const useFirebase = () => {
     // handle Update Profile
     
     const handleUpdateProfile = async(data) => {
-        
+        const email = data.email;
         const image = data.photoURL[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -144,18 +144,33 @@ const useFirebase = () => {
                 const profile = {
                     displayName: data.displayName,
                     email: data.email,
+                    phone: data.phone,
                     photoURL: img
                 }
-                console.log(profile);
-
+                
                 // send to database
+                fetch(`http://localhost:5000/profile/${email}`, {
+                    method: 'PUT',
+                    headers: {
+                        "content-type" : "application/json"
+                    },
+                    body: JSON.stringify(profile)
+                })
+                .then(res => res.json())
+                .then(inserted => {
+                    console.log(inserted);
+                    if(inserted.matchedCount){
+                        toast.success("Updated Successfully")
+                        reset();
+                    }else{
+                        toast.error("Faild to Update")
+                    }
+                })
 
             }
         })
-        // console.log(data);
         // await updateProfile({displayName : displayName, photoURL})
 
-        reset();
     }
 
 

@@ -1,14 +1,13 @@
 import React from 'react';
 import useFirebase from '../../../Hooks/useFirebase';
+import useProfile from '../../../Hooks/useProfile';
 
 import avater from '../../../images/avatar.jpg';
 const Profile = () => {
     const {user, register, handleSubmit, handleUpdateProfile} = useFirebase();
+    const [profile] = useProfile();
 
-    if(user?.email === null){
-        return user.email = "This Users Email is Encrypted";
-    }
-
+    
     return (
         <div>
             <div className="h-full text-left">
@@ -24,7 +23,7 @@ const Profile = () => {
 
                         <span className="text-gray-600">This information is secret so be careful</span>
                         <div className="w-full h-fit p-8 mx-2 flex justify-center">
-                            <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? `${user?.photoURL}` : `${avater}`} alt="" />
+                            <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? `${user?.photoURL}` : `${avater}` || profile?.photoURL ? `${profile?.photoURL}` : `${avater}`} alt="" />
                         </div>
                     </div>
 
@@ -33,12 +32,16 @@ const Profile = () => {
                             <div className="pb-6">
                                 <label for="name" className="font-semibold text-gray-700 block pb-1">Name</label>
                                 <div className="flex">
-                                    <input disabled id="username" className="border-1  rounded-r px-4 py-2 w-full" type="text" value={user?.displayName} />
+                                    <input disabled id="username" className="border-1  rounded-r px-4 py-2 w-full" type="text" value={user?.displayName ? user?.displayName : profile.displayName} />
                                 </div>
                             </div>
                             <div className="pb-4">
                                 <label for="about" className="font-semibold text-gray-700 block pb-1">Email</label>
                                 <input disabled id="email" className="border-1  rounded-r px-4 py-2 w-full" type="email" value={ user ? `${user?.email}` : `${user?.email}`} />
+                            </div>
+                            <div className="pb-4">
+                                <label for="about" className="font-semibold text-gray-700 block pb-1">Phone</label>
+                                <input disabled id="phone" className="border-1  rounded-r px-4 py-2 w-full" type="tel" value={ profile?.phone ? `${profile?.phone}` : '`+880-123-456-789`'} />
                                 <span className="text-gray-600 pt-4 block opacity-70">Personal login information of your account</span>
                             </div>
                         </div>
@@ -61,6 +64,7 @@ const Profile = () => {
                 <form onSubmit={handleSubmit(handleUpdateProfile)} action="" className='py-3'>
                 <input {...register('displayName')} type="text" placeholder="Enter Your Name" className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
                 <input {...register('email')} type="email" placeholder="Enter Your Email" value={ user ? `${user?.email}` : `${user?.email}`} className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
+                <input {...register('phone')} type="tel" placeholder="Enter Your Phone" className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
                 <input {...register('photoURL')} type="file" placeholder="Enter Your Password" className="input bg-slate-100 my-2 input-ghost items-center w-full block mx-auto max-w-xs cursor-pointer border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" />
                 <input className='btn px-7 btn-secondary my-5 block mx-auto' type="submit" value="Save" />
                 </form> 

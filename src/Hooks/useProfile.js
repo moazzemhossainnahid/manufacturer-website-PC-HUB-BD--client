@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import Loading from '../Pages/components/Loading';
 import useFirebase from './useFirebase';
 
 const useProfile = () => {

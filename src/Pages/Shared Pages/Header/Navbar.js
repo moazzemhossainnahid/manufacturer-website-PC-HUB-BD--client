@@ -61,6 +61,11 @@ const Navbar = ({ children }) => {
 
                                     </label>
                                 </div>
+                                <div className="text-sm font-semibold flex items-center">
+                                    {
+                                        user?.displayName && <div class="badge badge-primary badge-outline">{user?.displayName.slice(0,6)}</div>
+                                    }
+                                </div>
                                 <div className="">
                                     <div className="dropdown dropdown-end">
                                         <label tabIndex="0" className="btn btn-ghost btn-circle avatar">

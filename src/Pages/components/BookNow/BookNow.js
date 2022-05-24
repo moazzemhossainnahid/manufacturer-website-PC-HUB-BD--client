@@ -4,12 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useFirebase from '../../../Hooks/useFirebase';
-import useProfile from '../../../Hooks/useProfile';
 
 const BookNow = () => {
     const {id} = useParams();
     const [product, setProduct] = useState();
-    const [profile] = useProfile();
     const {user} = useFirebase();
     const { register, handleSubmit, reset} = useForm();
     useEffect( () => {
@@ -24,8 +22,6 @@ const BookNow = () => {
         const quantity = data.quantity;
         const address = data.address;
         const phone = data.phone;
-        
-        console.log(quantity);
 
         if(quantity < minOrder){
             toast.error(`Order At Least ${minOrder} Pcs`);
@@ -36,7 +32,34 @@ const BookNow = () => {
             return;
         }
 
-        reset();
+        const order = {
+            productName: product?.name,
+            imageURL: product?.imageURL,
+            userName: user?.name,
+            email: user?.email,
+            address: address,
+            phone: phone,
+            orderQuantity: quantity,
+        }
+
+        fetch(`http://localhost:5000/orders`, {
+            method: 'POST', 
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                toast("Order Purchase Successfully");
+                reset();
+            }
+        })
+
+
+
+
     }
 
 
@@ -75,7 +98,7 @@ const BookNow = () => {
                     <label className="label">
                         <span className="label-text text-white font-semibold">Phone</span>
                     </label>
-                    <input type="text" {...register("phone")} defaultValue={ profile?.phone ? `${profile?.phone}` : ''} className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    <input type="text" {...register("phone")} className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>
                     <div className="form-control w-full mx-auto max-w-xs">
                     <label className="label">
@@ -88,7 +111,7 @@ const BookNow = () => {
                         <span className="label-text text-white font-semibold">Quantity</span>
                     </label>
 
-                    <input type="number" {...register("quantity")} required defaultValue={product?.minOrder} placeholder="Enter Quantity as You Want Purchess" className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    <input type="number" {...register("quantity")} required placeholder="Enter Quantity as You Want Purchess" className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>    
                     
                     <input className='btn px-7 btn-secondary my-5 block mx-auto' type="submit" value="Purchase" />

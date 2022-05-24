@@ -20,6 +20,7 @@ import Profile from './Pages/Shared Pages/Header/Profile';
 import MyOrder from './Pages/Dashboard/MyOrder';
 import MyReview from './Pages/Dashboard/MyReview';
 import AllUsers from './Pages/Dashboard/AllUsers';
+import RequireAdmin from './Pages/components/RequireAdmin';
 
 function App() {
   return (
@@ -40,7 +41,9 @@ function App() {
         <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}>
           <Route index element={<MyOrder/>}/>
           <Route path="myreview" element={<MyReview/>}/>
-          <Route path="allusers" element={<AllUsers/>}/>
+          <Route path="allusers" element={<RequireAdmin><AllUsers/></RequireAdmin>}/>
+          <Route path="addproducts" element={<RequireAdmin><AllUsers/></RequireAdmin>}/>
+          <Route path="removeproducts" element={<RequireAdmin><AllUsers/></RequireAdmin>}/>
         </Route>
         <Route path="/about" element={<About/>}/>
         <Route path="/blogs" element={<Blogs/>}/>

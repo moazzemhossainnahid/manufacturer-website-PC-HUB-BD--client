@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useFirebase from './useFirebase';
 
 const useAdmin = () => {
     const [admin , setAdmin] = useState(false);
+    const [adminLoading , setAdminLoading] = useState(true);
     const {user} = useFirebase()
     useEffect( () => {
         const email = user?.email;
@@ -14,12 +15,15 @@ const useAdmin = () => {
             }
         })
         .then(res => res.json())
-        .then(data => setAdmin(data.admin))
+        .then(data => {
+            setAdmin(data.admin)
+            setAdminLoading(false)
+        })
 
     },[user]);
 
 
-    return [admin];
+    return [admin, adminLoading];
 };
 
 export default useAdmin;

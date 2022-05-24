@@ -1,34 +1,53 @@
+
 {
     "resources": [
       {
-        "title": "Find me on Twitter",
-        "link": "https://twitter.com/kendalmintcode",
-        "imageUrl": "https://placeimg.com/300/300/any"
+        "title": "Monitor",
+        "imageUrl": "https://i.ibb.co/K9kGSfn/monitor.png"
       },
       {
-        "title": "Welcome to Ark Labs",
-        "link": "https://ark-labs.co.uk",
-        "imageUrl": "https://placeimg.com/300/300/animals"
+        "title": "Keyboard",
+        "imageUrl": "https://i.ibb.co/DRvqHDD/keyboard.png"
       },
       {
-        "title": "Some sort of third title",
-        "link": "https://twitter.com/kendalmintcode",
-        "imageUrl": "https://placeimg.com/300/300/architecture"
+        "title": "Hard Disk Drive",
+        "imageUrl": "https://i.ibb.co/gTGSmGn/SATA-Hard-Disk-Drive.png"
       },
       {
-        "title": "Super item number the last",
-        "link": "https://twitter.com/kendalmintcode",
-        "imageUrl": "https://placeimg.com/300/300/tech"
+        "title": "UPS",
+        "imageUrl": "https://i.ibb.co/f1G1gWj/UPS-PNG.png"
       },
       {
-        "title": "Some sort of third title",
-        "link": "https://twitter.com/kendalmintcode",
-        "imageUrl": "https://placeimg.com/300/300/architecture"
+        "title": "Power Supply Unit",
+        "imageUrl": "https://i.ibb.co/9rfRn8n/psu.png"
       },
       {
-        "title": "Super item number the last",
-        "link": "https://twitter.com/kendalmintcode",
-        "imageUrl": "https://placeimg.com/300/300/tech"
+        "title": "Mouse",
+        "imageUrl": "https://i.ibb.co/mB68dp1/computer-mouse.png"
+      },
+      {
+        "title": "Graphics Card",
+        "imageUrl": "https://i.ibb.co/zs7f40Q/Graphic-Card.png"
+      },
+      {
+        "title": "SSD",
+        "imageUrl": "https://i.ibb.co/T8KpdYK/SSD.png"
+      },
+      {
+        "title": "PC Case",
+        "imageUrl": "https://i.ibb.co/dk77LSj/pc-case.png"
+      },
+      {
+        "title": "Motherboard",
+        "imageUrl": "https://i.ibb.co/yd6VB4Q/Computer-Motherboard.png"
+      },
+      {
+        "title": "Cooling Fan",
+        "imageUrl": "https://i.ibb.co/R43F9KV/Computer-Cooling-Fan.png"
+      },
+      {
+        "title": "Flash Drive",
+        "imageUrl": "https://i.ibb.co/BfnryqD/sandisk-usb-flash.png"
       }
     ]
   }

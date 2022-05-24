@@ -1,4 +1,5 @@
 import { signOut } from 'firebase/auth';
+import { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useSignInWithGithub, useSignInWithFacebook, useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -31,6 +32,12 @@ const useFirebase = () => {
 
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 
+    // useEffect( () => {
+    //     if(token){
+    //         navigate(from, {replace:true} || "/")
+    //     }
+    // },[token, from, navigate])
+
     // handle Signup form
     const handleSignupform = async(body) => {
         const displayName = body.displayName;
@@ -50,8 +57,9 @@ const useFirebase = () => {
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({displayName : displayName})
         .then(() => {
-            if(token){
+            if(user){
                 navigate(from, {replace:true} || '/');
+                toast.success("User Created Successfully");
             }
             
             reset();
@@ -71,10 +79,11 @@ const useFirebase = () => {
 
         await signInWithEmailAndPassword(email, password)
         .then(() => {
-            if(token){
-                navigate(from, {replace:true});
+            if(user){
+                navigate(from, {replace:true} || '/');
+                toast.success("Signin User Successfully");
             }
-            // toast.success("Signin User Successfully");
+            
             reset();
         })
 
@@ -84,10 +93,11 @@ const useFirebase = () => {
     const handleGoogleSignin = async() => {
         await signInWithGoogle()
         .then(() => {
-            if(token){
-                navigate(from, {replace:true});
+            if(user){
+                navigate(from, {replace:true} || '/');
+                toast.success("Signin User Successfully");
             }
-            // toast.success("Signin User Successfully");
+            
         })
     }
 
@@ -96,11 +106,12 @@ const useFirebase = () => {
         
          SignInWithGithub()
         .then(() => {
-            if(token){
-                navigate(from, {replace:true});
+            if(user){
+                navigate(from, {replace:true} || '/');
+                toast.success("Signin User Successfully");
             }
 
-            // toast.success("Signin User Successfully");
+            
         })
     }
 
@@ -108,10 +119,11 @@ const useFirebase = () => {
     const handleFacebookSignin = async() => {
         await SignInWithFacebook()
         .then(() => {
-            if(token){
-                navigate(from, {replace:true});
+            if(user){
+            navigate(from, {replace:true} || '/');
+                toast.success("Signin User Successfully");
             }
-            // toast.success("Signin User Successfully");
+            
         })
     }
 
@@ -152,14 +164,16 @@ const useFirebase = () => {
                 fetch(`http://localhost:5000/profile/${email}`, {
                     method: 'PUT',
                     headers: {
-                        "content-type" : "application/json"
+                        "content-type" : "application/json",
+                        "authorization" : `Bearer ${localStorage.getItem('accessToken')}`
+                        
                     },
                     body: JSON.stringify(profile)
                 })
                 .then(res => res.json())
                 .then(inserted => {
                     console.log(inserted);
-                    if(inserted.matchedCount){
+                    if(inserted){
                         toast.success("Updated Successfully")
                         reset();
                     }else{

@@ -23,6 +23,7 @@ import AllUsers from './Pages/Dashboard/AllUsers';
 import RequireAdmin from './Pages/components/RequireAdmin';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
+import Blog from './Pages/Blogs/Blog/Blog';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         </Route>
         <Route path="/about" element={<About/>}/>
         <Route path="/blogs" element={<Blogs/>}/>
+        <Route path="/blog/:id" element={<Blog/>}/>
         <Route path="/profile" element={<RequireAuth><Profile/></RequireAuth>}/>
         <Route path="/products" element={<Products/>}/>
         <Route path="/product/:id" element={<RequireAuth><BookNow/></RequireAuth>}/>

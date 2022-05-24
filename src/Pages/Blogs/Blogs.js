@@ -1,15 +1,10 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../components/Loading';
 import ShowBlogs from './ShowBlogs';
 
 const Blogs = () => {
-    // const [blogs, setBlogs] = useState([]);
 
-    // axios.get(`http://localhost:5000/blogs`)
-    // .ten(data => setBlogs(data)) 
-    // console.log(blogs);
 
     const { data: blogs, isLoading } = useQuery('blogs', () => fetch('http://localhost:5000/blogs').then(res => res.json()))
 

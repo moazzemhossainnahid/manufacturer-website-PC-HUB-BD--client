@@ -6,12 +6,13 @@ import useFirebase from './useFirebase';
 const useProfile = () => {
     const {user} = useFirebase();
     const [profile, setProfile] = useState([]);
+    const email = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profile/${user?.email}`)
+        fetch(`http://localhost:5000/profile/${email}`)
         .then(res => res.json())
         .then(data => setProfile(data))
-    }, [user]);
+    }, [user, email]);
 
     // const { isLoading, error, data} = useQuery('profile', () =>
     // fetch(`http://localhost:5000/profile/${user?.email}`)

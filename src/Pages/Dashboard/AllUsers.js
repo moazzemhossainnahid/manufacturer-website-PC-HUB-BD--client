@@ -5,7 +5,7 @@ import UsersRow from './UsersRow';
 
 const AllUsers = () => {
 
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/users',
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users',
     {
         method: 'GET',
         headers: {
@@ -34,7 +34,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                        {
-                           users.map(user=> <UsersRow key={user?._id} user={user} index/>)
+                           users.map(user=> <UsersRow key={user?._id} user={user} refetch = {refetch} />)
                        }
                     </tbody>
                 </table>

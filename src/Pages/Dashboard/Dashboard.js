@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAdmin from '../../Hooks/useAdmin';
 import Loading from '../components/Loading';
 
 const Dashboard = () => {
+    const [admin] = useAdmin();
     return (
         <div>
            <div class="drawer drawer-mobile drawer-end">
@@ -18,7 +20,9 @@ const Dashboard = () => {
                 {/* <!-- Sidebar content here --> */}
                 <li><NavLink to="/dashboard">My Order</NavLink></li>
                 <li><NavLink to="/dashboard/myreview">My Review</NavLink></li>
-                <li><NavLink to="/dashboard/allusers">All Users</NavLink></li>
+                {
+                    admin && <li><NavLink to="/dashboard/allusers">All Users</NavLink></li>
+                }
                 </ul>
             
             </div>

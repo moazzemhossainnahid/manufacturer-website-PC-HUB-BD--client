@@ -1,0 +1,38 @@
+[
+    {
+        "name":"How improve the performance of a React Application?",
+        "author": "Moazzem Nahid",
+        "image": "https://www.freecodecamp.org/news/content/images/2019/08/react.jpg",
+        "blog": "To optimize React rendering, you need to make sure that components receive only necessary props. It will let you control the CPU consumption and avoid over-rendering unnecessary features. The solution is to create a functional component that will collect all props and redistribute them to other components.Internally, React uses several clever techniques to minimize the number of costly DOM operations required to update the UI. For many applications, using React will lead to a fast user interface without doing much work to specifically optimize for performance. Nevertheless, there are several ways you can speed up your React application."
+    },
+    {
+        "name":"What are the different ways to manage a state in a React application?",
+        "author": "Moazzem Nahid",
+        "image": "https://www.freecodecamp.org/news/content/images/2022/03/lautaro-andreani-UYsBCu9RP3Y-unsplash.jpg",
+        "blog": "There are four main types of state you need to properly manage in your React apps. Simplay Managing state in your React apps isn’t as simple as using (useState) or (useReducer).  They are (Local State, Global State, Server State, URL State). Local state is most often managed in React using the useState hook.Global state is data we manage across multiple components.Data that comes from an external server that must be integrated with our UI state.Data that exists on our URLs, including the pathname and query parameters."
+    },
+    {
+        "name":"How does prototypical inheritance work?",
+        "author": "Moazzem Nahid",
+        "image": "https://miro.medium.com/max/1400/1*BfcQCnoGhGMrac2JMYTLPQ.png",
+        "blog": "The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object. getPrototypeOf and Object.Prototype-based programming is a style of object-oriented programming in which behaviour reuse (known as inheritance) is performed via a process of reusing existing objects that serve as prototypes. This model can also be known as prototypal, prototype-oriented, classless, or instance-based programming."
+    },
+    {
+        "name":"Why you do not set the state directly in React. why use spread [...state]",
+        "author": "Moazzem Nahid",
+        "image": "https://miro.medium.com/max/1400/1*dkobBMlN8xVswrMjOks0fg.png",
+        "blog": "when we want to copy an array and work with this but dont change his default data.then we use spread operator like [...state] .The three dots syntax (…) is part of ES6 and not React itself and it’s used by two operators i.e. the Spread and Rest operators. The Spread operator lets you expand an iterable like an object, string, or array into its elements while the Rest operator does the inverse by reducing a set of elements into one array.The spread operator is very useful when you want to make an exact copy of an existing array, you can use the spread operator to accomplish this quickly."
+    },
+    {
+        "name":"How implement a search to find products by name?",
+        "author": "Moazzem Nahid",
+        "image": "https://developers.google.com/search/podcasts/search-off-the-record/images/search-off-the-record-logo.png",
+        "blog": "When we want to setach an Obejct from an Array we should use filter method to search includes in that array of matching search input value.In JavaScript, includes() method determines whether a string contains the given characters within it or not. This method returns true if the string contains the characters, otherwise, it returns false. . The includes() method is case sensitive.The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate."
+    },
+    {
+        "name":"What is a unit test? Why should write unit tests?",
+        "author": "Moazzem Nahid",
+        "image": "https://miro.medium.com/max/1024/1*Y07KF-_laqG2cJ1Squ0Bag.png",
+        "blog": "Unit tests are typically automated tests written and run by software developers to ensure that a section of an application 'known as the unit meets' its design and behaves as intended. In procedural programming, a unit could be an entire module, but it is more commonly an individual function or procedure.One of the benefits of unit tests is that they isolate a function, class or method and only test that piece of code. Higher quality individual components create overall system resiliency. Thus, the result is reliable code. Unit tests also change the nature of the debugging process."
+    }
+]

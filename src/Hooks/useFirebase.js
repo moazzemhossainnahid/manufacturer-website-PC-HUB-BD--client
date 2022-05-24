@@ -191,23 +191,7 @@ const useFirebase = () => {
 
 
     // ------------------------------------------------------------
-    const handlePurchase = (data) => {
-        const quantity = data.quantity;
-        const avQuantity = data.avQuantity;
-        const minOrder = data.minOrder;
 
-        if(quantity < minOrder){
-            toast.error(`Order At Least ${minOrder} Pcs`);
-            return;
-        }
-        if(quantity > avQuantity){
-            toast.error(`Order Processed Maximum ${avQuantity} Pcs`);
-            return;
-        }
-
-        reset();
-    }
-    
     return {
         user,
         loading,
@@ -221,7 +205,6 @@ const useFirebase = () => {
         handleFacebookSignin,
         handleUpdateProfile,
         handleSignOut,
-        handlePurchase
     };
 };
 

@@ -10,22 +10,23 @@ const Profile = () => {
 
     
     return (
-        <div>
+        <div className=''>
             <div className="h-full text-left">
 
-                <div className="border-b-2 block md:flex">
+                <div className="border-b-2 my-20 flex flex-col md:flex-row">
 
-                    <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
-                        <div className="flex justify-between">
+                    <div className="w-full md:w-2/5 p-4 mt-20 md:mt-0 sm:p-6 lg:p-8 bg-white shadow-md">
+                        <div className="">
                             <span className="text-xl font-semibold block">{user ? `${user?.displayName}'s Profile` : 'User Profile'} </span>
                             {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
-                            <label for="my-modal-3" className="-mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</label>
                         </div>
 
                         <span className="text-gray-600">This information is secret so be careful</span>
                         <div className="w-full h-fit p-8 mx-2 flex justify-center">
                             <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? `${user?.photoURL}` : `${avater}` || profile?.photoURL ? `${profile?.photoURL}` : `${avater}`} alt="" />
                         </div>
+                        <div className="flex justify-end py-3"><label for="my-modal-3" className="mt-2 text-md font-bold text-right  text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</label></div>
+
                     </div>
 
                     <div className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">

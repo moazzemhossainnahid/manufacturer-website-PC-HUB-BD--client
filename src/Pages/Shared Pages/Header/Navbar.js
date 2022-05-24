@@ -72,7 +72,6 @@ const Navbar = ({ children }) => {
                                         </label>
                                         <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36">
                                             <li className='my-1'> <NavLink to="/profile">Profile</NavLink> </li>
-                                            <li className='my-1'> <NavLink to="/settings">Settings</NavLink> </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -106,9 +105,7 @@ const Navbar = ({ children }) => {
                                     </div>
                                 </label>
                                 <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36">
-                                    <li className='my-1'> <NavLink to="/profile">Profile</NavLink> </li>
-                                    <li className='my-1'> <NavLink to="/settings">Settings</NavLink> </li>
-                                </ul>
+                                    <li className='my-1'> <NavLink to="/profile">Profile</NavLink> </li>                                </ul>
                             </div>
                         </div>
                     </ul>

@@ -1,17 +1,48 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useFirebase from '../../../Hooks/useFirebase';
+import useProfile from '../../../Hooks/useProfile';
 
 const BookNow = () => {
     const {id} = useParams();
     const [product, setProduct] = useState();
-    const {user, register, handleSubmit, handlePurchase} = useFirebase();
+    const [profile] = useProfile();
+    const {user} = useFirebase();
+    const { register, handleSubmit, reset} = useForm();
     useEffect( () => {
         axios.get(`http://localhost:5000/product/${id}`)
         .then(data => setProduct(data.data))
     },[id]);
-    console.log(user);
+
+
+    const handlePurchase = (data) => {
+        const avQuantity = product?.avQuantity;
+        const minOrder = product?.minOrder;
+        const quantity = data.quantity;
+        const address = data.address;
+        const phone = data.phone;
+        
+        console.log(quantity);
+
+        if(quantity < minOrder){
+            toast.error(`Order At Least ${minOrder} Pcs`);
+            return;
+        }
+        if(quantity > avQuantity){
+            toast.error(`Order Processed Maximum ${avQuantity} Pcs`);
+            return;
+        }
+
+        reset();
+    }
+
+
+
+
+
     return (
         <div>
             <h2 className='text-2xl py-5'>Product: <span className="font-semibold text-accent">{product?.name}</span></h2>
@@ -27,30 +58,39 @@ const BookNow = () => {
                 <div className="py-5">
                     <h3 className="font-semibold text-2xl text-white text-center">Booked for</h3>
                     <form onSubmit={handleSubmit(handlePurchase)} action="" className='py-3'>
+                  
+                    <div className="form-control w-full mx-auto max-w-xs">
+                    <label className="label">
+                        <span className="label-text text-white font-semibold">Name</span>
+                    </label>
                     <input type="text" value={user?.displayName} disabled className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    </div>
+                    <div className="form-control w-full mx-auto max-w-xs">
+                    <label className="label">
+                        <span className="label-text text-white font-semibold">Email</span>
+                    </label>
                     <input type="email" value={user?.email} disabled className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
-                    <div className="form-control w-full mx-auto max-w-xs">
-                    <label className="label">
-                        <span className="label-text text-white font-semibold">Available Quantity</span>
-                    </label>
-                    <input type="text" {...register("avQuantity")} value={product?.avQuantity} readOnly id="avQuantity" className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>
                     <div className="form-control w-full mx-auto max-w-xs">
                     <label className="label">
-                        <span className="label-text text-white font-semibold">Price Per Unit</span>
+                        <span className="label-text text-white font-semibold">Phone</span>
                     </label>
-                    <input type="text" {...register("price")} value={product?.price} readOnly className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    <input type="text" {...register("phone")} defaultValue={ profile?.phone ? `${profile?.phone}` : ''} className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>
                     <div className="form-control w-full mx-auto max-w-xs">
                     <label className="label">
-                        <span className="label-text text-white font-semibold">Minimum Order Quantity</span>
+                        <span className="label-text text-white font-semibold">Address</span>
                     </label>
-                    <input type="text" {...register("minOrder")} value={product?.minOrder} readOnly className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    <textarea type="text" {...register("address")} id="address" placeholder='Enter Your Address' className="input bg-slate-100 h-24 resize-none my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>
+                    <div className="form-control w-full mx-auto max-w-xs">
+                    <label className="label">
+                        <span className="label-text text-white font-semibold">Quantity</span>
+                    </label>
+
+                    <input type="number" {...register("quantity")} required defaultValue={product?.minOrder} placeholder="Enter Quantity as You Want Purchess" className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    </div>    
                     
-                    
-                    
-                    <input type="number" {...register("quantity")} required placeholder="Enter Quantity You Want Purchess" className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
                     <input className='btn px-7 btn-secondary my-5 block mx-auto' type="submit" value="Purchase" />
                     </form>
                 </div>

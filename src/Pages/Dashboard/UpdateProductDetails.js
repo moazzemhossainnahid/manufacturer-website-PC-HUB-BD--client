@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const AddProduct = () => {
+const UpdateProductDetails = () => {
+
     const { register, handleSubmit, reset} = useForm();
+    const [product, setProduct] = useState();
+    const {id} = useParams();
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
+
+    useEffect( () => {
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setProduct(data))
+    },[id]);
 
     const handleAddProduct = (data) => {
         const name = data.name;
@@ -34,11 +45,11 @@ const AddProduct = () => {
                     price: price,
                     description: description
                 }
-                console.log(product);
+                // console.log(product);
 
                     // Post to database
-                    fetch(`http://localhost:5000/product`, {
-                        method: 'POST',
+                    fetch(`http://localhost:5000/updateproduct/${id}`, {
+                        method: 'PUT',
                         headers: {
                             "content-type" : "application/json",
                             "authorization" : `Bearer ${localStorage.getItem('accessToken')}`
@@ -48,24 +59,23 @@ const AddProduct = () => {
                     })
                     .then(res => res.json())
                     .then(inserted => {
-                        if(inserted.insertedId ){
-                            toast.success("Product Add Successfully")
+                        console.log(inserted);
+                        if(inserted.modifiedCount > 0 ){
+                            toast.success("Product Update Successfully")
                             reset();
                         }else{
-                            toast.error("Faild to Add Product")
+                            toast.error("Faild to Update Product")
                         }
                     })
             
         }})
     }
-
-
     return (
         <div className="bg-gradient-to-l from-secondary to-accent text-left h-full w-full">
 
         <div className="w-full flex items-center justify-center my-12">
             <div className="bg-white shadow rounded py-12 lg:px-28 px-8">
-                <p className="md:text-3xl text-xl font-bold leading-7 text-center text-gray-700">Add a Product</p>
+                <p className="md:text-3xl text-xl font-bold leading-7 text-center text-gray-700">Update Product: {product?.name}</p>
                <form onSubmit={handleSubmit(handleAddProduct)} className="mb-32" action="">
                    
                <div className="md:flex items-center mt-12">
@@ -115,4 +125,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default UpdateProductDetails;

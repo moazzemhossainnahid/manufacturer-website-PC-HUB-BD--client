@@ -69,8 +69,8 @@ const BookNow = () => {
             
             <div className="flex justify-center items-center py-10">
             <div className='mx-auto w-screen flex justify-center items-center'>
-            <div className="card w-3/5 shadow-xl  bg-gray-200">
-            <figure><img src={product?.imageURL} alt="" className='w-96 object-cover' /></figure>
+            <div className="card w-full md:w-3/5 m-2 md:m-0 shadow-xl  bg-gray-200">
+            <figure><img src={product?.imageURL} alt="" className='w-96 h-60 p-2 object-cover' /></figure>
             <div className="card-body bg-accent text-left">
                 <h2 style={{overflowWrap: 'break-word'}} className="card-title"> {product?.name}
                 </h2>

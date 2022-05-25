@@ -5,7 +5,7 @@ import useAdmin from '../../Hooks/useAdmin';
 const Dashboard = () => {
     const [admin] = useAdmin();
     return (
-        <div>
+        <div className=''>
            <div class="drawer drawer-mobile drawer-end">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content flex flex-col items-center justify-center">

@@ -25,6 +25,7 @@ import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
 import Blog from './Pages/Blogs/Blog/Blog';
 import AllOrders from './Pages/Dashboard/AllOrders';
+import UpdateProductDetails from './Pages/Dashboard/UpdateProductDetails';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           <Route path="allorders" element={<RequireAdmin><AllOrders/></RequireAdmin>}/>
           <Route path="addproduct" element={<RequireAdmin><AddProduct/></RequireAdmin>}/>
           <Route path="manageproduct" element={<RequireAdmin><ManageProduct/></RequireAdmin>}/>
+          <Route path="updateproduct/:id" element={<RequireAdmin><UpdateProductDetails/></RequireAdmin>}/>
         </Route>
         <Route path="/about" element={<About/>}/>
         <Route path="/blogs" element={<Blogs/>}/>

@@ -13,8 +13,8 @@ const Blogs = () => {
     }
 
     return (
-        <div>
-            <div id="blog" className="bg-gray-100 px-4 xl:px-0 py-12">
+        <div className=''>
+            <div id="blog" className="bg-gray-100 px-4 xl:px-0 py-12 pb-32">
                 <div className="mx-auto container">
                     <h1 className="text-center text-3xl lg:text-5xl tracking-wider text-gray-900">Latest from our Blog</h1>
                     <div className="mt-12 lg:mt-24">

@@ -47,7 +47,7 @@ const UpdateProductDetails = () => {
                 }
                 // console.log(product);
 
-                    // Post to database
+                    // Update to database
                     fetch(`http://localhost:5000/updateproduct/${id}`, {
                         method: 'PUT',
                         headers: {

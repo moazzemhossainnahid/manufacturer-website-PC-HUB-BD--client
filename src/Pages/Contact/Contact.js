@@ -35,7 +35,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <p className="text-xs leading-3 text-gray-600 mt-4">By clicking submit you agree to our terms of service, privacy policy and how we use data as stated</p>
-                <div className="flex items-center justify-center w-full">
+                <div className="flex items-center justify-center w-full pb-32">
                     <button className="mt-9 text-base font-semibold leading-none text-white py-4 px-10 bg-secondary rounded hover:bg-primary focus:ring-2 focus:ring-offset-2 focus:ring-secondary focus:outline-none">SUBMIT</button>
                 </div>
             </div>

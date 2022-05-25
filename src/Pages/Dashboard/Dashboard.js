@@ -28,6 +28,9 @@ const Dashboard = () => {
                     admin && <li><NavLink to="/dashboard/allusers">All Users</NavLink></li>
                 }
                 {
+                    admin && <li><NavLink to="/dashboard/allorders">All Orders</NavLink></li>
+                }
+                {
                      admin && <li><NavLink to="/dashboard/addproduct">Add Product</NavLink></li>
                 }
                 {

@@ -57,9 +57,6 @@ const BookNow = () => {
             }
         })
 
-
-
-
     }
 
 
@@ -98,13 +95,13 @@ const BookNow = () => {
                     <label className="label">
                         <span className="label-text text-white font-semibold">Phone</span>
                     </label>
-                    <input type="text" {...register("phone")} className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    <input type="text" {...register("phone")} required className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>
                     <div className="form-control w-full mx-auto max-w-xs">
                     <label className="label">
                         <span className="label-text text-white font-semibold">Address</span>
                     </label>
-                    <textarea type="text" {...register("address")} id="address" placeholder='Enter Your Address' className="input bg-slate-100 h-24 resize-none my-2 block mx-auto input-ghost w-full max-w-xs" />
+                    <textarea type="text" {...register("address")} id="address" required placeholder='Enter Your Address' className="input bg-slate-100 h-24 resize-none my-2 block mx-auto input-ghost w-full max-w-xs" />
                     </div>
                     <div className="form-control w-full mx-auto max-w-xs">
                     <label className="label">

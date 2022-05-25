@@ -9,7 +9,10 @@ const Profile = () => {
 
     
     return (
-        <div className=''>
+        <section className='bg-gradient-to-l from-secondary to-accent h-full w-full'>
+        
+        <div className='w-5/6 mx-auto pb-20'>
+
             <div className="h-full text-left">
 
                 <div className="border-b-2 my-20 flex flex-col md:flex-row">
@@ -74,6 +77,7 @@ const Profile = () => {
         </div>
 
         </div>
+        </section>
     );
 };
 

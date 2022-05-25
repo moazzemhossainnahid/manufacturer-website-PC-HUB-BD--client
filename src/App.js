@@ -26,6 +26,7 @@ import ManageProduct from './Pages/Dashboard/ManageProduct';
 import Blog from './Pages/Blogs/Blog/Blog';
 import AllOrders from './Pages/Dashboard/AllOrders';
 import UpdateProductDetails from './Pages/Dashboard/UpdateProductDetails';
+import AddReview from './Pages/Dashboard/AddReview';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}>
           <Route index element={<Profile/>}/>
           <Route path="myorder" element={<MyOrder/>}/>
+          <Route path="addreview" element={<AddReview/>}/>
           <Route path="myreview" element={<MyReview/>}/>
           <Route path="allusers" element={<RequireAdmin><AllUsers/></RequireAdmin>}/>
           <Route path="allorders" element={<RequireAdmin><AllOrders/></RequireAdmin>}/>

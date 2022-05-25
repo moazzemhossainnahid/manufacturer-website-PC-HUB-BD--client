@@ -1,82 +1,82 @@
 [
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
+        "name": "Intel Core i9 11th Gen Processor",
         "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 50,
+        "avQuantity": 2000,
+        "price": 65000
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "HP LED 28' 4k Monitor ",
+        "imageURL": "https://i.ibb.co/K9kGSfn/monitor.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 100,
+        "avQuantity": 10000,
+        "price": 12500
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "Logitech p6kuy RGB Keyboard",
+        "imageURL": "https://i.ibb.co/DRvqHDD/keyboard.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 200,
+        "avQuantity": 16000,
+        "price": 560
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "Transcand 1TB Hard Disk",
+        "imageURL": "https://i.ibb.co/gTGSmGn/SATA-Hard-Disk-Drive.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 150,
+        "avQuantity": 17000,
+        "price": 3700
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "HP Power Supply Unit",
+        "imageURL": "https://i.ibb.co/9rfRn8n/psu.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 200,
+        "avQuantity": 9000,
+        "price": 750
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "Intel Graphics Card LLBC2",
+        "imageURL": "https://i.ibb.co/zs7f40Q/Graphic-Card.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 50,
+        "avQuantity": 2000,
+        "price": 29500
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "A4Tech Transparent Computer Case",
+        "imageURL": "https://i.ibb.co/dk77LSj/pc-case.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 100,
+        "avQuantity": 4570,
+        "price": 11700
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "Intel RGB Cooling Fan",
+        "imageURL": "https://i.ibb.co/R43F9KV/Computer-Cooling-Fan.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 120,
+        "avQuantity": 6000,
+        "price": 1700
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "Gigabyte 3DA Motherboard",
+        "imageURL": "https://i.ibb.co/yd6VB4Q/Computer-Motherboard.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 70,
+        "avQuantity": 5700,
+        "price": 13500
     },
     {
-        "name": "Intel Core i9 11900KF 11th Gen Rocket Lake Processor",
-        "imageURL": "https://i.ibb.co/DWwtmtS/BOX-I9-1.png",
+        "name": "Transcand 120 GB SSD",
+        "imageURL": "https://i.ibb.co/T8KpdYK/SSD.png",
         "description": "It has the L3 SmartCache of 30 MB containing 16 cores and 24 threads. This 12th Gen Core i9 comes with Mobo Socket LGA 1700, 64 Bit Width, 2 Memory Channels with Maximum memory 256GB capacity, it has thermal design power (TDP) rating of 125W. This Core i9 12th Gen processor has few expansion options.",
-        "minOrder": 5000,
-        "avQuantity": 20000,
-        "price": 57000
+        "minOrder": 100,
+        "avQuantity": 7000,
+        "price": 2700
     }
 ]

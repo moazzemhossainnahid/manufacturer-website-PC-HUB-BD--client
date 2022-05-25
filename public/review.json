@@ -1,0 +1,20 @@
+[
+    {
+        "review": "Best Website for Buying Computer Product. There Communication & Bahaviour is user Friendly. Highly Recommended.",
+        "image": "https://i.ibb.co/ZgF5Zzz/avatar-1.png",
+        "name": "Tom Koch",
+        "profession": "Developer"
+    },
+    {
+        "review": "Best Website for Buying Computer Product. There Communication & Bahaviour is user Friendly. Highly Recommended.",
+        "image": "https://i.ibb.co/8BLjmqz/avatar-2.png",
+        "name": "Alan Max",
+        "profession": "Shopkeeper"
+    },
+    {
+        "review": "Best Website for Buying Computer Product. There Communication & Bahaviour is user Friendly. Highly Recommended.",
+        "image": "https://i.ibb.co/y0KCX7p/avatar-3.png",
+        "name": "Kora Joo",
+        "profession": "Designer"
+    }
+]

@@ -22,6 +22,9 @@ const Dashboard = () => {
                     admin ? '' : <li><NavLink to="/dashboard/myorder">My Order</NavLink></li>
                 }
                 {
+                    admin ? '' : <li><NavLink to="/dashboard/addreview">Add Review</NavLink></li>
+                }
+                {
                     admin ? '' : <li><NavLink to="/dashboard/myreview">My Review</NavLink></li>
                 }
                 {

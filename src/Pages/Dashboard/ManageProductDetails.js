@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faClose } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import swal from 'sweetalert';
 
 const ManageProductDetails = ({product, setProducts, products}) => {
     const {_id, imageURL, name} = product;
@@ -11,10 +11,18 @@ const ManageProductDetails = ({product, setProducts, products}) => {
 
 const handleDeleteProduct = (id) => {
     
-    const proceed = window.confirm('Are You Sure to Delete ?')
     // Post to database
 
-    if(proceed){
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Product!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            
         fetch(`http://localhost:5000/product/${id}`, {
             method: 'DELETE'
         })
@@ -22,14 +30,20 @@ const handleDeleteProduct = (id) => {
         .then(inserted => {
             // console.log(inserted);
             if(inserted.deletedCount > 0 ){
-                toast.success("Product Deleted Successfully");
                 const newProducts = products.filter(p => p._id !== id);
                 setProducts(newProducts);
-            }else{
-                toast.error("Faild to Delete Product")
+                swal("Poof! Your Product has been deleted!", {
+                    icon: "success",
+                  });
             }
         })
-    }
+
+        } else {
+          swal("Your Product file is safe!");
+        }
+      });
+
+
 }
 
     return (

@@ -5,7 +5,7 @@ const AllOrdersDetails = ({order}) => {
     
     return (
         <div className='w-5/6 mx-auto'>
-            <div class="card card-side bg-base-100 shadow-xl bg-rose-300">
+            <div class="card card-side shadow-xl bg-rose-300">
             <div className="flex justify-center items-center">
             <figure><img className='w-32 object-cover' src={imageURL} alt="Movie"/></figure>
             </div>

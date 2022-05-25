@@ -9,9 +9,9 @@ const Product = ({product}) => {
             <div className="card w-96 bg-base-100 shadow-xl">
             <figure><img src={imageURL} alt="" className='w-52 object-cover' /></figure>
             <div className="card-body bg-accent text-left">
-                <h2 className="card-title"> {name}
+                <h2 style={{overflowWrap: 'break-word'}} className="card-title"> {name}
                 </h2>
-                <p className=''>{description.slice(0,100)}...</p>
+                <p style={{overflowWrap: 'break-word'}} className=''>{description.slice(0,100)}...</p>
                 <p className="font-semibold">Available: <span className="text-white">{avQuantity}</span> Pcs</p>
                 <p className="font-semibold">Price: <span className="text-white">{price}</span> Tk</p>
                 <div className="card-actions justify-end">

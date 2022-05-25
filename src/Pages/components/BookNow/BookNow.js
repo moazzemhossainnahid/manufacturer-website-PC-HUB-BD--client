@@ -72,9 +72,9 @@ const BookNow = () => {
             <div className="card w-3/5 shadow-xl  bg-gray-200">
             <figure><img src={product?.imageURL} alt="" className='w-96 object-cover' /></figure>
             <div className="card-body bg-accent text-left">
-                <h2 className="card-title"> {product?.name}
+                <h2 style={{overflowWrap: 'break-word'}} className="card-title"> {product?.name}
                 </h2>
-                <p className=''>{product?.description}</p>
+                <p style={{overflowWrap: 'break-word'}} className=''>{product?.description}</p>
                 <div className="py-5">
                     <h3 className="font-semibold text-2xl text-white text-center">Booked for</h3>
                     <form onSubmit={handleSubmit(handlePurchase)} action="" className='py-3'>

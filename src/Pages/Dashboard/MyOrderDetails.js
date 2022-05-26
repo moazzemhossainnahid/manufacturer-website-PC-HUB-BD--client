@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyOrderDetails = ({order}) => {
-    const {productName, imageURL, address, phone, email, orderQuantity, orderValue} = order;
+    const {_id, productName, imageURL, address, phone, email, orderQuantity, orderValue, paid} = order;
     return (
         <div className='w-5/6 mx-auto'>
             <div class="card card-side shadow-xl bg-rose-300 p-2">
@@ -17,7 +18,7 @@ const MyOrderDetails = ({order}) => {
                 <p><span className="font-semibold">Phone:</span> {phone}</p>
                 <p><span className="font-semibold">Address:</span> {address}</p>
                 <div class="card-actions w-full my-5 flex justify-between">
-                <button class="btn btn-primary">Pay</button>
+                {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>}
                 <button class="btn btn-gray-500">Delete</button>
             </div>
             </div>

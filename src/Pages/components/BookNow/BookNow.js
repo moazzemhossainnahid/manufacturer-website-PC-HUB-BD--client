@@ -38,7 +38,7 @@ const BookNow = () => {
         const order = {
             productName: product?.name,
             imageURL: product?.imageURL,
-            userName: user?.name,
+            userName: user?.displayName,
             email: user?.email,
             address: address,
             phone: phone,

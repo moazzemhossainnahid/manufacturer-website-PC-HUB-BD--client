@@ -111,9 +111,8 @@ const Navbar = ({ children }) => {
                             <div className="dropdown dropdown-end">
                                 <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        {
-                                            user?.photoURL ? <img src={user?.photoURL} alt='' /> : <img src={avater} alt='' /> || profile?.photoURL ? <img src={profile?.photoURL} alt='' /> : <img src={avater} alt='' />
-                                        }
+                                    <img src={user?.photoURL ? user?.photoURL : avater || profile?.photoURL ? profile?.photoURL : avater} alt="" className="" />
+
                                     </div>
                                 </label>
                                 <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36">

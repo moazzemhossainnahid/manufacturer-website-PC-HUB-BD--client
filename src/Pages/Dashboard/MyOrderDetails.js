@@ -61,8 +61,8 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
 
 
                 {/* i face a problem in payment method...when i click in pay button...
-                then my server sive crushed again and again..i try to solve this but dont do it..
-                thats why i commented this button at last moment */}
+                then my server site crushed again and again..i try to solve this but dont do it..
+                thats why i commented this button at last moment...please check my code for payment method */}
 
                 {/* {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>} */}
                 <button class="btn btn-accent">Pay</button>

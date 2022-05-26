@@ -5,6 +5,7 @@ const CheckoutForm = ({order}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState('');
+  const [success, setSuccess] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const price = order?.orderValue;
   console.log(order);
@@ -47,8 +48,25 @@ const CheckoutForm = ({order}) => {
 
     if (error) {
       setCardError(error?.message || '');
-    } else {
-      console.log('[PaymentMethod]', paymentMethod);
+
+      // confirm card payment
+      const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: order?.userName,
+              email: order?.email,
+            },
+          },
+        },
+      );
+
+      if(intentError){
+        setCardError(intentError.message)
+      }else {
+      setSuccess('[PaymentMethod]', paymentMethod);
     }
 
 

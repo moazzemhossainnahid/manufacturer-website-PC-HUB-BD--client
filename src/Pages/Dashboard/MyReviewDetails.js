@@ -18,7 +18,7 @@ const MyReviewDetails = ({rview, setReviews, reviews}) => {
           .then((willDelete) => {
             if (willDelete) {
                 
-            fetch(`https://pc-hub-bd.herokuapp.com/review/${id}`, {
+            fetch(`http://localhost:5000/review/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

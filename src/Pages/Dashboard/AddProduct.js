@@ -37,7 +37,7 @@ const AddProduct = () => {
                 console.log(product);
 
                     // Post to database
-                    fetch(`https://pc-hub-bd.herokuapp.com/product`, {
+                    fetch(`http://localhost:5000/product`, {
                         method: 'POST',
                         headers: {
                             "content-type" : "application/json",

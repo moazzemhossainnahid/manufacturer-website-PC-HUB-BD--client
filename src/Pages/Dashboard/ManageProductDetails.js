@@ -23,8 +23,12 @@ const handleDeleteProduct = (id) => {
       .then((willDelete) => {
         if (willDelete) {
             
-        fetch(`https://pc-hub-bd.herokuapp.com/product/${id}`, {
-            method: 'DELETE'
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: 'DELETE',
+            headers: {
+                "content-type" : "application/json",
+                "authorization" : `Bearer ${localStorage.getItem('accessToken')}`
+            }
         })
         .then(res => res.json())
         .then(inserted => {

@@ -11,7 +11,7 @@ const MyOrder = () => {
   const email = user?.email;
 
   useEffect(() => {
-    axios.get(`https://pc-hub-bd.herokuapp.com/orders/${email}`)
+    axios.get(`http://localhost:5000/orders/${email}`)
       .then(data => {
         setOrders(data.data);
       })

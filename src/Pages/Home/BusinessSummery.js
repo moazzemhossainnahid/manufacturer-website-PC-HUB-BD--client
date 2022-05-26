@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faDesktopAlt, faThumbsUp, faMale } from '@fortawesome/free-solid-svg-icons';
 import CountUp from 'react-countup';
 import image from '../../images/bg-5.jpg';
 

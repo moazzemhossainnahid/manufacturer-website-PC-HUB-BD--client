@@ -7,7 +7,7 @@ const AllOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get('https://pc-hub-bd.herokuapp.com/orders')
+        axios.get('http://localhost:5000/orders')
             .then(data => {
                 setOrders(data.data);
             })

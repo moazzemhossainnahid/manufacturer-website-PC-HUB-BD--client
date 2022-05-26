@@ -1,10 +1,51 @@
 import React from 'react';
+import swal from 'sweetalert';
 
-const MyReviewDetails = ({rview}) => {
+const MyReviewDetails = ({rview, setReviews, reviews}) => {
+
+    
+    const handleDeleteReview = (id) => {
+    
+        // Post to database
+    
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                
+            fetch(`https://pc-hub-bd.herokuapp.com/review/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(inserted => {
+                // console.log(inserted);
+                if(inserted.deletedCount > 0 ){
+                    const newReviews = reviews.filter(r => r._id !== id);
+                    setReviews(newReviews);
+                    swal("Poof! Your Product has been deleted!", {
+                        icon: "success",
+                      });
+                }
+            })
+    
+            } else {
+              swal("Your Product file is safe!");
+            }
+          });
+    
+    
+    }
+
+
     return (
         <div className="">
-            <div>
-                <div className="group w-full bg-white relative flex flex-col items-center hover:bg-indigo-700 cursor-pointer shadow-md md:p-12 p-6">
+            <div className='bg-rose-300 rounded-2xl'>
+                <div className="group w-full bg-base-200 relative rounded-t-2xl flex flex-col items-center hover:bg-indigo-700 cursor-pointer shadow-md md:p-12 p-6">
                     <div className="text-gray-600 group-hover:text-white flex flex-col items-center">
                         <svg width={26} height={27} viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0)">
@@ -17,7 +58,7 @@ const MyReviewDetails = ({rview}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p className="xl:w-80 text-base leading-normal text-center mt-4">{rview?.review}</p>
+                        <p style={{ overflowWrap: 'break-word' }} className="xl:w-80 text-base leading-normal text-center mt-4">{rview?.review}</p>
                     </div>
                     <div className="text-white group-hover:text-indigo-700 absolute bottom-0 -mb-6">
                         <svg width={34} height={28} viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +89,11 @@ const MyReviewDetails = ({rview}) => {
                     <img src={rview?.image} alt="profile pictre" className="w-12 h-12 rounded-full border" />
                     <p className="text-base font-semibold leading-4 my-2 text-gray-800">{rview?.name}</p>
                     <p className="text-base leading-4 text-center text-gray-600">{rview?.profession}</p>
+                    <div className="py-8">
+                    <button  onClick={() => handleDeleteReview(`${rview?._id}`)} className='btn btn-primary'>Delete</button>
                 </div>
+                </div>
+
             </div>
         </div>
     );

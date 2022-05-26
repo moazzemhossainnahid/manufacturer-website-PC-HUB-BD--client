@@ -26,6 +26,7 @@ const BookNow = () => {
         const phone = data.phone;
         const orderValue = (price * quantity);
 
+
         if (quantity < minOrder) {
             toast.error(`Order At Least ${minOrder} Pcs`);
             return;
@@ -55,7 +56,6 @@ const BookNow = () => {
             .then((willDelete) => {
                 if (willDelete) {
 
-
                     fetch(`https://pc-hub-bd.herokuapp.com/orders`, {
                         method: 'POST',
                         headers: {
@@ -68,6 +68,7 @@ const BookNow = () => {
                             if (data.insertedId) {
                                 swal("Order Purchase Successfully", {
                                     icon: "success",
+                                    
                                 });
                                 reset();
                             }

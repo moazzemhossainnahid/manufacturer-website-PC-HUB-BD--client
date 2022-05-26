@@ -2,7 +2,7 @@ import React from 'react';
 import useFirebase from '../../../Hooks/useFirebase';
 import useProfile from '../../../Hooks/useProfile';
 
-import avater from '../../../images/avatar.jpg';
+import avater from '../../../images/Avatar.png';
 const Profile = () => {
     const {user, register, handleSubmit, handleUpdateProfile} = useFirebase();
     const [profile] = useProfile();
@@ -25,7 +25,7 @@ const Profile = () => {
 
                         <span className="text-gray-600">This information is secret so be careful</span>
                         <div className="w-full h-fit p-8 mx-2 flex justify-center">
-                            <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? `${user?.photoURL}` : `${avater}` || profile?.photoURL ? `${profile?.photoURL}` : `${avater}`} alt="" />
+                            <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? user?.photoURL : avater || profile?.photoURL ? profile?.photoURL : avater} alt="" />
                         </div>
                         <div className="flex justify-end py-3"><label for="my-modal-3" className="mt-2 text-md font-bold text-right  text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</label></div>
 
@@ -45,7 +45,7 @@ const Profile = () => {
                             </div>
                             <div className="pb-4">
                                 <label for="about" className="font-semibold text-gray-700 block pb-1">Phone</label>
-                                <input disabled id="phone" className="border-1  rounded-r px-4 py-2 w-full" type="tel" value={ profile?.phone ? `${profile?.phone}` : '`+880-123-456-789`'} />
+                                <input disabled id="phone" className="border-1  rounded-r px-4 py-2 w-full" type="tel" value={ profile?.phone ? `${profile?.phone}` : '+880-123-456-789'} />
                                 <span className="text-gray-600 pt-4 block opacity-70">Personal login information of your account</span>
                             </div>
                         </div>

@@ -7,7 +7,7 @@ const Product = ({product}) => {
     return (
         <div className='mx-auto'>
             <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={imageURL} alt="" className='w-52 h-52 p-2 object-cover' /></figure>
+            <figure><img src={imageURL} alt="" className='w-52 h-52 p-2' /></figure>
             <div className="card-body bg-accent text-left">
                 <h2 style={{overflowWrap: 'break-word'}} className="card-title"> {name}
                 </h2>

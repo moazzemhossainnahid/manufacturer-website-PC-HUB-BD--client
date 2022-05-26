@@ -29,7 +29,7 @@ const MyReview = () => {
                     <div className="my-20 w-full">
                         <div className='grid grid-cols-1 gap-5'>
                             {
-                                reviews.map(rview => <MyReviewDetails key={rview._id} rview={rview} />)
+                                reviews.map(rview => <MyReviewDetails key={rview._id} rview={rview} reviews={reviews} setReviews={setReviews} />)
                             }
                         </div>
                     </div>

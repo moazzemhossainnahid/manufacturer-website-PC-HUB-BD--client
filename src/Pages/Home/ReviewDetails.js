@@ -2,6 +2,7 @@ import React from 'react';
 
 const ReviewDetails = ({rview}) => {
     const {review, image, name, profession} = rview;
+
     return (
         <div>
         <div className="group w-full bg-white relative flex flex-col items-center hover:bg-indigo-700 cursor-pointer shadow-md md:p-12 p-6">
@@ -17,7 +18,7 @@ const ReviewDetails = ({rview}) => {
                         </clipPath>
                     </defs>
                 </svg>
-                <p className="xl:w-80 text-base leading-normal text-center mt-4">{review}</p>
+                <p style={{ overflowWrap: 'break-word' }} className="xl:w-80 text-base leading-normal text-center mt-4">{review}</p>
             </div>
             <div className="text-white group-hover:text-indigo-700 absolute bottom-0 -mb-6">
                 <svg width={34} height={28} viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg">

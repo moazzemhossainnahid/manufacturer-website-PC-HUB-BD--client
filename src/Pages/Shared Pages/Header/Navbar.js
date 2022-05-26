@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 
 import image from '../../../images/PC-HUB.png';
-import avater from '../../../images/avatar.jpg';
+import avater from '../../../images/Avatar.png';
 import useProfile from '../../../Hooks/useProfile';
 
 const Navbar = ({ children }) => {
@@ -75,9 +75,8 @@ const Navbar = ({ children }) => {
                                     <div className="dropdown dropdown-end">
                                         <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                                             <div className="w-10 rounded-full">
-                                                {
-                                                    user?.photoURL ? <img src={user?.photoURL} alt='' /> : <img src={avater} alt='' /> || profile?.photoURL ? <img src={profile?.photoURL} alt='' /> : <img src={avater} alt='' />
-                                                }
+                                                <img src={user?.photoURL ? user?.photoURL : avater || profile?.photoURL ? profile?.photoURL : avater} alt="" className="" />
+
                                             </div>
                                         </label>
                                         {

@@ -10,7 +10,7 @@ import useToken from './useToken';
 
 const useFirebase = () => {
     const [user, loading, error] = useAuthState(auth);
-    const [createUserWithEmailAndPassword, cuser] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, cuser] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
     const [signInWithEmailAndPassword, suser] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, guser] = useSignInWithGoogle(auth);
     const [SignInWithGithub, gituser] = useSignInWithGithub(auth);
@@ -29,8 +29,6 @@ const useFirebase = () => {
     //     console.log("there was an error");
     //     signinError = <p className="text-red-500"><small>{error?.message} || {cerror?.message} || {serror?.message} || {gerror?.message} || {giterror?.message} || {ferror?.message}</small></p>
     // }
-
-    const token = localStorage.getItem('accessToken');
 
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 

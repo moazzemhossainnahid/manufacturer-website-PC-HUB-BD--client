@@ -58,6 +58,12 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
                 <p><span className="font-semibold">Phone:</span> {phone}</p>
                 <p><span className="font-semibold">Address:</span> {address}</p>
                 <div class="card-actions w-full my-5 flex justify-between">
+
+
+                {/* i face a problem in payment method...when i click in pay button...
+                then my server sive crushed again and again..i try to solve this but dont do it..
+                thats why i commented this button at last moment */}
+
                 {/* {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>} */}
                 <button class="btn btn-accent">Pay</button>
                 <button onClick={() => handleDeleteOrder(`${_id}`)} class="btn btn-gray-500">Delete</button>

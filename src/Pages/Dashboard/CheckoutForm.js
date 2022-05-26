@@ -11,7 +11,7 @@ const CheckoutForm = ({order}) => {
   console.log(order);
 
   useEffect( () => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://pc-hub-bd.herokuapp.com/create-payment-intent", {
       method: 'POST',
       headers: {
           'content-type': 'application/json',

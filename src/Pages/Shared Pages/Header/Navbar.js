@@ -21,13 +21,16 @@ const Navbar = ({ children }) => {
                 <div className="drawer-content flex flex-col">
                     {/* <!-- Navbar --> */}
                     <div className="w-full px-10 navbar bg-base-300">
-                        <label for="my-drawer-2" class="btn btn-secondary btn-outline h-5 drawer-button lg:hidden">
+                        {
+                            user && 
+                            <label for="my-drawer-2" class="btn btn-secondary btn-outline h-5 drawer-button lg:hidden">
                             {/* {
                                 clicked ? <FontAwesomeIcon size='2x' icon={faClose} /> : <FontAwesomeIcon size='2x' icon={faBars} />
 
                             } */}
                             D-Board
                         </label>
+                        }
                         <div onClick={() => navigate('/')} className="flex-1 px-2 mx-2 cursor-pointer"><img src={image} alt="" className="object-cover w-32" /></div>
                         <div onClick={() => { setClicked(!clicked) }} className="flex-none lg:hidden">
                             <label for="my-drawer-3" className="btn btn-square btn-ghost">
@@ -41,7 +44,9 @@ const Navbar = ({ children }) => {
                             <ul className="menu menu-horizontal gap-2">
                                 {/* <!-- Navbar menu content here --> */}
                                 <li><NavLink to="/" className="rounded-lg">Home</NavLink></li>
-                                <li><NavLink to="/dashboard" className="rounded-lg">Dashboard</NavLink></li>
+                                {
+                                    user && <li><NavLink to="/dashboard" className="rounded-lg">Dashboard</NavLink></li>
+                                }
                                 <li><NavLink to="/products" className="rounded-lg">Products</NavLink></li>
                                 <li><NavLink to="/about" className="rounded-lg">About</NavLink></li>
                                 <li><NavLink to="/blogs" className="rounded-lg">Blogs</NavLink></li>

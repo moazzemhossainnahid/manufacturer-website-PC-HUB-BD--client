@@ -58,7 +58,8 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
                 <p><span className="font-semibold">Phone:</span> {phone}</p>
                 <p><span className="font-semibold">Address:</span> {address}</p>
                 <div class="card-actions w-full my-5 flex justify-between">
-                {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>}
+                {/* {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>} */}
+                <button class="btn btn-accent">Pay</button>
                 <button onClick={() => handleDeleteOrder(`${_id}`)} class="btn btn-gray-500">Delete</button>
             </div>
             </div>

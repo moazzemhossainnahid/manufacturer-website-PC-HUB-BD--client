@@ -38,7 +38,7 @@ const AddReview = () => {
                 
 
                     // Post to database
-                    fetch(`http://localhost:5000/review`, {
+                    fetch(`https://pc-hub-bd.herokuapp.com/review`, {
                         method: 'POST',
                         headers: {
                             "content-type" : "application/json",

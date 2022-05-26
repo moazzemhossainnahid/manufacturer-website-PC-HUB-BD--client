@@ -10,7 +10,7 @@
 
 // const Payment = () => {
 //     const { id } = useParams();
-//     const url = `http://localhost:5000/order/${id}`;
+//     const url = `https://pc-hub-bd.herokuapp.com/order/${id}`;
 
 //     const {data: order, isLoading} = useQuery(['booking', id], () => fetch(url, {
 //         method: 'GET',

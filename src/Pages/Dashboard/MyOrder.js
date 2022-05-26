@@ -27,7 +27,7 @@ const MyOrder = () => {
           <div className="my-20 w-full">
             <div className='grid grid-cols-1 gap-5'>
               {
-                orders.map(order => <MyOrderDetails key={order._id} order={order} />)
+                orders.map(order => <MyOrderDetails key={order._id} order={order} setOrders={setOrders} orders={orders} />)
               }
             </div>
           </div>

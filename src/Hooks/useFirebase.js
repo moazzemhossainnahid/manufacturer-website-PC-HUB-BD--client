@@ -17,9 +17,9 @@ const useFirebase = () => {
     const [SignInWithFacebook, fuser] = useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-    
-    const { register, handleSubmit, reset} = useForm();
-    const [token] = useToken(user || cuser || suser || guser || gituser || fuser);
+
+    const { register, handleSubmit, reset } = useForm();
+    // const [token] = useToken(user || cuser || suser || guser || gituser || fuser);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -30,6 +30,8 @@ const useFirebase = () => {
     //     signinError = <p className="text-red-500"><small>{error?.message} || {cerror?.message} || {serror?.message} || {gerror?.message} || {giterror?.message} || {ferror?.message}</small></p>
     // }
 
+    const token = localStorage.getItem('accessToken');
+
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 
     // useEffect( () => {
@@ -39,12 +41,12 @@ const useFirebase = () => {
     // },[token, from, navigate])
 
     // handle Signup form
-    const handleSignupform = async(body) => {
+    const handleSignupform = async (body) => {
         const displayName = body.displayName;
         const email = body.email;
         const password = body.password;
 
-        if(email === '' || password === ''){
+        if (email === '' || password === '') {
             toast.error("Please Input Valid User Information");
             return;
         }
@@ -52,94 +54,81 @@ const useFirebase = () => {
         // if(cerror){
         //     signinError = <p className="text-red-500"><small>{cerror?.message} </small></p>
         // }
-    
+
 
         await createUserWithEmailAndPassword(email, password)
-        await updateProfile({displayName : displayName})
-        .then(() => {
-            if(user){
-                navigate(from, {replace:true} || '/');
+        await updateProfile({ displayName: displayName })
+            .then(() => {
+                navigate(from, { replace: true } || '/');
                 toast.success("User Created Successfully");
-            }
-            
-            reset();
-        })
+
+                reset();
+            })
 
     }
 
     // handle Signin form
-    const handleSigninform = async(body) => {
+    const handleSigninform = async (body) => {
         const email = body.email;
         const password = body.password;
 
-        if(email === '' || password === ''){
+        if (email === '' || password === '') {
             toast.error("Please Input Valid Email & Password");
             return;
         }
 
         await signInWithEmailAndPassword(email, password)
-        .then(() => {
-            if(user){
-                navigate(from, {replace:true} || '/');
+            .then(() => {
+                navigate(from, { replace: true } || '/');
                 toast.success("Signin User Successfully");
-            }
-            
-            reset();
-        })
+                reset();
+            })
 
     }
 
     // handle Google Signin
-    const handleGoogleSignin = async() => {
+    const handleGoogleSignin = async () => {
         await signInWithGoogle()
-        .then(() => {
-            if(user){
-                navigate(from, {replace:true} || '/');
+            .then(() => {
+                navigate(from, { replace: true } || '/');
                 toast.success("Signin User Successfully");
-            }
-            
-        })
+            })
     }
 
     // handle Github Signin
-    const handleGithubSignin = () => {
-        
-         SignInWithGithub()
-        .then(() => {
-            if(user){
-                navigate(from, {replace:true} || '/');
-                toast.success("Signin User Successfully");
-            }
+    const handleGithubSignin = async () => {
 
-            
-        })
+        await SignInWithGithub()
+            .then(() => {
+                navigate(from, { replace: true } || '/');
+                toast.success("Signin User Successfully");
+            })
+
     }
 
     // handle Facebook Signin
-    const handleFacebookSignin = async() => {
+    const handleFacebookSignin = async () => {
         await SignInWithFacebook()
-        .then(() => {
-            if(user){
-            navigate(from, {replace:true} || '/');
+            .then(() => {
+                navigate(from, { replace: true } || '/');
                 toast.success("Signin User Successfully");
-            }
-            
-        })
+            })
     }
 
     // handle SignOut
-    const handleSignOut = async() => {
+    const handleSignOut = async () => {
         await signOut(auth)
-        .then(() => {
-            localStorage.removeItem("accessToken");
-            // toast.success("User SignOut Successfully", {position: "top-center"});
-        })
+            .then(() => {
+                localStorage.removeItem("accessToken");
+                navigate('/signin');
+                toast.success("User SignOut Successfully", {position: "top-left"});
+            })
     }
 
 
     // handle Update Profile
-    
-    const handleUpdateProfile = async(data) => {
+
+    const handleUpdateProfile = async (data) => {
         const email = data.email;
         const image = data.photoURL[0];
         const formData = new FormData();
@@ -149,40 +138,40 @@ const useFirebase = () => {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(result => {
-            if(result.success){
-                const img = result.data.url;
-                const profile = {
-                    displayName: data.displayName,
-                    email: data.email,
-                    phone: data.phone,
-                    photoURL: img
-                }
-                
-                // send to database
-                fetch(`http://localhost:5000/profile/${email}`, {
-                    method: 'PUT',
-                    headers: {
-                        "content-type" : "application/json",
-                        "authorization" : `Bearer ${localStorage.getItem('accessToken')}`
-                        
-                    },
-                    body: JSON.stringify(profile)
-                })
-                .then(res => res.json())
-                .then(inserted => {
-                    console.log(inserted);
-                    if(inserted){
-                        toast.success("Updated Successfully")
-                        reset();
-                    }else{
-                        toast.error("Faild to Update")
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const profile = {
+                        displayName: data.displayName,
+                        email: data.email,
+                        phone: data.phone,
+                        photoURL: img
                     }
-                })
 
-            }
-        })
+                    // send to database
+                    fetch(`http://localhost:5000/profile/${email}`, {
+                        method: 'PUT',
+                        headers: {
+                            "content-type": "application/json",
+                            "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+
+                        },
+                        body: JSON.stringify(profile)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+                            console.log(inserted);
+                            if (inserted) {
+                                toast.success("Updated Successfully")
+                                reset();
+                            } else {
+                                toast.error("Faild to Update")
+                            }
+                        })
+
+                }
+            })
         // await updateProfile({displayName : displayName, photoURL})
 
     }

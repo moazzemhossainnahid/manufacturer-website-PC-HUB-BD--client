@@ -1,8 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
-const MyOrderDetails = ({order}) => {
+
+
+const MyOrderDetails = ({order, orders, setOrders}) => {
     const {_id, productName, imageURL, address, phone, email, orderQuantity, orderValue, paid} = order;
+
+    const handleDeleteOrder = (id) => {
+    
+        // Post to database
+    
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                
+            fetch(`http://localhost:5000/order/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(inserted => {
+                // console.log(inserted);
+                if(inserted.deletedCount > 0 ){
+                    const newOrders = orders.filter(p => p._id !== id);
+                    setOrders(newOrders);
+                    swal("Poof! Your Product has been deleted!", {
+                        icon: "success",
+                      });
+                }
+            })
+    
+            } else {
+              swal("Your Product file is safe!");
+            }
+          });
+    
+    
+    }
     return (
         <div className='w-5/6 mx-auto'>
             <div class="card card-side shadow-xl bg-rose-300 p-2">
@@ -19,7 +59,7 @@ const MyOrderDetails = ({order}) => {
                 <p><span className="font-semibold">Address:</span> {address}</p>
                 <div class="card-actions w-full my-5 flex justify-between">
                 {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>}
-                <button class="btn btn-gray-500">Delete</button>
+                <button onClick={() => handleDeleteOrder(`${_id}`)} class="btn btn-gray-500">Delete</button>
             </div>
             </div>
             </div>

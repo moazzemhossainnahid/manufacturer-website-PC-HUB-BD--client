@@ -4,25 +4,27 @@ import { useParams } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
+import { useQuery } from 'react-query';
+import Loading from '../components/Loading';
 
 const stripePromise = loadStripe('pk_test_51L3TaVKQApjCPl5WWUHVzWyDMFjNTNqz4ICJGqIW88FRoSGqUoxVTxFaGVQoGVAArvREE5aXMfQY2md2CmJ0w5Jy00pegF3Un3');
 
 const Payment = () => {
     const { id } = useParams();
-    const [order, setOrder] = useState();
+    const url = `http://localhost:5000/order/${id}`;
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/order/${id}`, {
-            method: 'GET',
-            headers: {
-                'content-rype': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(data => setOrder(data.data))
-    }, [id]);
+    const {data: order, isLoading} = useQuery(['booking', id], () => fetch(url, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()));
 
-    console.log(order);
+    if(isLoading){
+        return <Loading/>
+    }
+
 
     return (
         <div className="w-full">
@@ -40,7 +42,7 @@ const Payment = () => {
                 <div class="card w-full md:w-3/6 bg-base-200 shadow-xl">
                     <div class="card-body text-left">
                         <Elements stripe={stripePromise} >
-                            <CheckoutForm />
+                            <CheckoutForm order={order} />
                         </Elements>
                     </div>
                 </div>

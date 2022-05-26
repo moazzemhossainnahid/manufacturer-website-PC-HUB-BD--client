@@ -17,9 +17,9 @@ const useFirebase = () => {
     const [SignInWithFacebook, fuser] = useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-
+ 
     const { register, handleSubmit, reset } = useForm();
-    const [token] = useToken(user || cuser || suser || guser || gituser || fuser);
+    const [token] = useToken(user);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -29,6 +29,9 @@ const useFirebase = () => {
     //     console.log("there was an error");
     //     signinError = <p className="text-red-500"><small>{error?.message} || {cerror?.message} || {serror?.message} || {gerror?.message} || {giterror?.message} || {ferror?.message}</small></p>
     // }
+
+
+    console.log(token);
 
 
 
@@ -154,7 +157,7 @@ const useFirebase = () => {
                         method: 'PUT',
                         headers: {
                             "content-type": "application/json",
-                            "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
 
                         },
                         body: JSON.stringify(profile)

@@ -3,18 +3,17 @@ import { useEffect, useState } from 'react';
 const useToken = (user) => {
     const [token, setToken] = useState('');
 
+
     useEffect( () => {
         const email = user?.email;
         const currentUser = {email: email};
-
 
         if(email){
             
             fetch(`http://localhost:5000/user/${email}`, {
                 method: 'PUT',
                 headers: {
-                    'content-type' : 'application/json',
-                    "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                    'content-type' : 'application/json',  
                 },
                 body: JSON.stringify(currentUser)
             })

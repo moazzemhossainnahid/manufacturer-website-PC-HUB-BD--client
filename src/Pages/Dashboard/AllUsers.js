@@ -10,7 +10,7 @@ const AllUsers = () => {
         method: 'GET',
         headers: {
             "content-type" : "application/json",
-            "authorization" : `Bearer ${localStorage.getItem('accessToken')}`
+            authorization : `Bearer ${localStorage.getItem('accessToken')}`
         }
     }
     ).then(res => res.json()))

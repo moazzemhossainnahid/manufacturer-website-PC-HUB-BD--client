@@ -19,7 +19,12 @@ const MyReviewDetails = ({rview, setReviews, reviews}) => {
             if (willDelete) {
                 
             fetch(`http://localhost:5000/review/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    "content-type" : "application/json",
+                    authorization : `Bearer ${localStorage.getItem('accessToken')}`
+                    
+                }
             })
             .then(res => res.json())
             .then(inserted => {

@@ -67,9 +67,19 @@ const CheckoutForm = ({ order }) => {
             );
 
             if (intentError) {
-                setCardError(intentError.message)
+                setCardError(intentError?.message);
+                setProcessing(false);
             } else {
-                setSuccess('[PaymentMethod]', paymentMethod);
+                setCardError('');
+                setTransactionId(paymentIntent.id);
+                console.log(paymentIntent);
+                setSuccess('Congrats! Your payment is completed.');
+
+                            //store payment on database
+            const payment = {
+                booking: order?._id,
+                transactionId: paymentIntent.id
+            }
             }
         }
 

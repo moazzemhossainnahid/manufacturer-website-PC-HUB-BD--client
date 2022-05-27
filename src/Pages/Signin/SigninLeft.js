@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useFirebase from '../../Hooks/useFirebase';
 
 const SigninLeft = () => {
-    const {register, handleSubmit, handleSigninform, handleGoogleSignin, handleGithubSignin, handleFacebookSignin} = useFirebase();
+    const {register, handleSubmit, handleSigninform, handleGoogleSignin, handleGithubSignin, handleFacebookSignin, signinError} = useFirebase();
 
 
     return (
@@ -21,6 +21,7 @@ const SigninLeft = () => {
             <input {...register('email')} type="email" placeholder="Enter Your Email" required className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
             <input {...register('password')} type="password" placeholder="Enter Your Password" required className="input bg-slate-100 my-2 block mx-auto input-ghost w-full max-w-xs" />
             <span className="text-gray-400 hover:text-accent"><Link to='/forgotpassword'>forgot Your Password?</Link></span>
+            {signinError}
             <input className='btn btn-outline px-7 btn-secondary my-5 block mx-auto' type="submit" value="SIGN IN" />
             </form>
             

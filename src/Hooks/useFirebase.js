@@ -10,24 +10,30 @@ import useToken from './useToken';
 
 const useFirebase = () => {
     const [user, loading, error] = useAuthState(auth);
-    const [createUserWithEmailAndPassword, cuser] = useCreateUserWithEmailAndPassword(auth);
-    const [signInWithEmailAndPassword, suser] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, guser] = useSignInWithGoogle(auth);
-    const [SignInWithGithub, gituser] = useSignInWithGithub(auth);
-    const [SignInWithFacebook, fuser] = useSignInWithFacebook(auth);
+    const [createUserWithEmailAndPassword, cuser, cloading, cerror] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword, suser, sloading, serror] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [SignInWithGithub, gituser, gitloading, giterror] = useSignInWithGithub(auth);
+    const [SignInWithFacebook, fuser, floading, ferror] = useSignInWithFacebook(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
- 
+
     const { register, handleSubmit, reset } = useForm();
     const [token] = useToken(user);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    // let signinError;
+    let signinError;
 
-    // if(error || cerror || serror || gerror || giterror || ferror){
-    //     console.log("there was an error");
-    //     signinError = <p className="text-red-500"><small>{error?.message} || {cerror?.message} || {serror?.message} || {gerror?.message} || {giterror?.message} || {ferror?.message}</small></p>
+    if (cerror || serror || gerror || giterror || ferror) {
+        console.log("there was an error");
+        signinError = <p className="text-red-500"><small>{error?.message || cerror?.message || serror?.message || gerror?.message || giterror?.message || ferror?.message}</small></p>
+    }else{
+        signinError = <p className="text-red-500"><small> </small></p> 
+    }
+
+    // if(cloading || sloading || gloading || gitloading || floading){
+    //     return <Loading/>
     // }
 
 
@@ -36,13 +42,7 @@ const useFirebase = () => {
 
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 
-    // useEffect( () => {
-    //     if(token){
-    //         navigate(from, {replace:true} || "/")
-    //     }
-    // },[token, from, navigate])
 
-    // handle Signup form
     const handleSignupform = async (body) => {
         const displayName = body.displayName;
         const email = body.email;
@@ -52,11 +52,6 @@ const useFirebase = () => {
             toast.error("Please Input Valid User Information");
             return;
         }
-
-        // if(cerror){
-        //     signinError = <p className="text-red-500"><small>{cerror?.message} </small></p>
-        // }
-
 
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({ displayName: displayName })
@@ -81,9 +76,11 @@ const useFirebase = () => {
 
         await signInWithEmailAndPassword(email, password)
             .then(() => {
-                navigate(from, { replace: true } || '/');
-                toast.success("Signin User Successfully");
-                reset();
+                if (token) {
+                    navigate(from, { replace: true } || '/');
+                    toast.success("Signin User Successfully");
+                    reset();
+                }
             })
 
     }
@@ -92,8 +89,10 @@ const useFirebase = () => {
     const handleGoogleSignin = async () => {
         await signInWithGoogle()
             .then(() => {
-                navigate(from, { replace: true } || '/');
-                toast.success("Signin User Successfully");
+                if (token) {
+                    navigate(from, { replace: true } || '/');
+                    toast.success("Signin User Successfully");
+                }
             })
     }
 
@@ -102,8 +101,10 @@ const useFirebase = () => {
 
         await SignInWithGithub()
             .then(() => {
-                navigate(from, { replace: true } || '/');
-                toast.success("Signin User Successfully");
+                if (token) {
+                    navigate(from, { replace: true } || '/');
+                    toast.success("Signin User Successfully");
+                }
             })
 
     }
@@ -112,8 +113,10 @@ const useFirebase = () => {
     const handleFacebookSignin = async () => {
         await SignInWithFacebook()
             .then(() => {
-                navigate(from, { replace: true } || '/');
-                toast.success("Signin User Successfully");
+                if (token) {
+                    navigate(from, { replace: true } || '/');
+                    toast.success("Signin User Successfully");
+                }
             })
     }
 
@@ -122,8 +125,10 @@ const useFirebase = () => {
         await signOut(auth)
             .then(() => {
                 localStorage.removeItem("accessToken");
-                navigate('/signin');
-                toast.success("User SignOut Successfully", {position: "top-left"});
+                if (!token) {
+                    navigate('/signin');
+                    toast.success("User SignOut Successfully", { position: "top-left" });
+                }
             })
     }
 
@@ -187,6 +192,7 @@ const useFirebase = () => {
         user,
         loading,
         error,
+        signinError,
         register,
         handleSubmit,
         handleSignupform,

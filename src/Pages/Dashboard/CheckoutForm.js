@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import Loading from '../components/Loading';
 
 const CheckoutForm = ({ order }) => {
     const stripe = useStripe();
@@ -9,7 +10,8 @@ const CheckoutForm = ({ order }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
-    const price = order?.orderValue;
+
+    const { _id, userName, email, orderValue } = order;
 
     useEffect(() => {
         fetch("http://localhost:5000/create-payment-intent", {
@@ -18,7 +20,7 @@ const CheckoutForm = ({ order }) => {
                 'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify({ price })
+            body: JSON.stringify({ orderValue })
         })
             .then(res => res.json())
             .then(data => {
@@ -26,7 +28,13 @@ const CheckoutForm = ({ order }) => {
                     setClientSecret(data.clientSecret)
                 }
             })
-    }, [price]);
+    }, [orderValue]);
+
+
+    if (processing) {
+        return <Loading />
+    }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -59,8 +67,8 @@ const CheckoutForm = ({ order }) => {
                     payment_method: {
                         card: card,
                         billing_details: {
-                            name: order?.userName,
-                            email: order?.email,
+                            name: userName,
+                            email: email,
                         },
                     },
                 },
@@ -75,11 +83,24 @@ const CheckoutForm = ({ order }) => {
                 console.log(paymentIntent);
                 setSuccess('Congrats! Your payment is completed.');
 
-                            //store payment on database
-            const payment = {
-                booking: order?._id,
-                transactionId: paymentIntent.id
-            }
+                //store payment on database
+                const payment = {
+                    booking: _id,
+                    transactionId: paymentIntent.id
+                }
+
+                fetch(`http://localhost:5000/order/${_id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(payment)
+                }).then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setProcessing(false)
+                })
             }
         }
 

@@ -4,7 +4,7 @@ import { faFacebook, faGoogle, faGithub } from '@fortawesome/free-brands-svg-ico
 import useFirebase from '../../../src/Hooks/useFirebase';
 
 const SignupRight = () => {
-    const {register, handleSubmit, handleSignupform, handleGoogleSignin, handleGithubSignin, handleFacebookSignin} = useFirebase();
+    const {register, handleSubmit, handleSignupform, handleGoogleSignin, handleGithubSignin, handleFacebookSignin, signinError} = useFirebase();
     return (
         <div className='w-full mx-auto rounded'>
             <h2 className="font-bold text-2xl py-5">Create Account</h2>
@@ -18,6 +18,7 @@ const SignupRight = () => {
             <input {...register('displayName')} type="text" placeholder="Enter Your Name" required className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
             <input {...register('email')} type="email" placeholder="Enter Your Email" required className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
             <input {...register('password')} type="password" placeholder="Enter Your Password" required className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs" />
+            {signinError}
             <input className='btn btn-outline px-7 btn-secondary my-5 block mx-auto' type="submit" value="SIGN UP" />
             </form>   
             </div>

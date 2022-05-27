@@ -21,7 +21,7 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
           .then((willDelete) => {
             if (willDelete) {
                 
-            fetch(`https://pc-hub-bd.herokuapp.com/order/${id}`, {
+            fetch(`http://localhost:5000/order/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -53,7 +53,7 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
             <div class="card-body text-left">
                 <h2 class="card-title">{productName}</h2>
                 <p><span className="font-semibold">Order Quantity:</span> {orderQuantity}</p>
-                <p><span className="font-semibold">Order Value:</span> {orderValue}</p>
+                <p><span className="font-semibold">Order Value: </span>$ {orderValue}</p>
                 <p><span className="font-semibold">Email:</span> {email}</p>
                 <p><span className="font-semibold">Phone:</span> {phone}</p>
                 <p><span className="font-semibold">Address:</span> {address}</p>
@@ -64,8 +64,8 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
                 then my server site crushed again and again..i try to solve this but dont do it..
                 thats why i commented this button at last moment...please check my code for payment method */}
 
-                {/* {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>} */}
-                <button class="btn btn-accent">Pay</button>
+                {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>}
+                {/* <button class="btn btn-accent">Pay</button> */}
                 <button onClick={() => handleDeleteOrder(`${_id}`)} class="btn btn-gray-500">Delete</button>
             </div>
             </div>

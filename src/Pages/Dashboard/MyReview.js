@@ -11,7 +11,7 @@ const MyReview = () => {
     const email = user?.email;
 
     useEffect(() => {
-        axios.get(`https://pc-hub-bd.herokuapp.com/reviews/${email}`)
+        axios.get(`http://localhost:5000/reviews/${email}`)
             .then(data => {
                 setReviews(data.data);
             })

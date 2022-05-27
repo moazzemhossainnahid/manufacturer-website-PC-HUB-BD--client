@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AllOrdersDetails = ({order}) => {
-    const {productName, imageURL, address, phone, email, orderQuantity} = order;
+    const {productName, imageURL, address, phone, email, orderQuantity, orderValue} = order;
     
     return (
         <div className='w-5/6 mx-auto'>
@@ -13,6 +13,7 @@ const AllOrdersDetails = ({order}) => {
             <div class="card-body text-left">
                 <h2 class="card-title">{productName}</h2>
                 <p><span className="font-semibold">Order Quantity:</span> {orderQuantity}</p>
+                <p><span className="font-semibold">Order Value: </span>$ {orderValue}</p>
                 <p><span className="font-semibold">Email:</span> {email}</p>
                 <p><span className="font-semibold">Phone:</span> {phone}</p>
                 <p><span className="font-semibold">Address:</span> {address}</p>

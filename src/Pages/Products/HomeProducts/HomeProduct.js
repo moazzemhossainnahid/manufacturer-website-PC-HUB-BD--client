@@ -13,7 +13,7 @@ const HomeProduct = ({product}) => {
                 </h2>
                 <p style={{overflowWrap: 'break-word'}} className=''>{description.slice(0,100)}...</p>
                 <p className="font-semibold">Available: <span className="text-white">{avQuantity}</span> Pcs</p>
-                <p className="font-semibold">Price: <span className="text-white">{price}</span> Tk</p>
+                <p className="font-semibold">Price: <span className="text-white">$ {price}</span> </p>
                 <div className="card-actions justify-end">
                 <div onClick={() => navigate(`/product/${_id}`)} className="btn btn-primary">Book Now</div> 
                 </div>

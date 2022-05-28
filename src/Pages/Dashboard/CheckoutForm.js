@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
     const { _id, userName, email, orderValue } = order;
 
     useEffect(() => {
-        fetch("https://pc-hub-bd.herokuapp.com/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -80,27 +80,26 @@ const CheckoutForm = ({ order }) => {
             } else {
                 setCardError('');
                 setTransactionId(paymentIntent.id);
-                console.log(paymentIntent);
                 setSuccess('Congrats! Your payment is completed.');
 
-                //store payment on database
-                const payment = {
-                    booking: _id,
-                    transactionId: paymentIntent.id
-                }
+                // //store payment on database
+                // const payment = {
+                //     booking: _id,
+                //     transactionId: paymentIntent.id
+                // }
 
-                fetch(`https://pc-hub-bd.herokuapp.com/order/${_id}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json',
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body: JSON.stringify(payment)
-                }).then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setProcessing(false)
-                })
+                // fetch(`http://localhost:5000/order/${_id}`, {
+                //     method: 'PATCH',
+                //     headers: {
+                //         'content-type': 'application/json',
+                //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                //     },
+                //     body: JSON.stringify(payment)
+                // }).then(res => res.json())
+                // .then(data => {
+                //     console.log(data);
+                //     setProcessing(false)
+                // })
             }
         }
 

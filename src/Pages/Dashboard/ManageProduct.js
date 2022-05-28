@@ -6,7 +6,7 @@ const ManageProduct = () => {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        axios.get(`https://pc-hub-bd.herokuapp.com/products`)
+        axios.get(`http://localhost:5000/products`)
             .then(data => setProducts(data.data))
     }, []);
 

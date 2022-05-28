@@ -31,9 +31,9 @@ const CheckoutForm = ({ order }) => {
     }, [orderValue]);
 
 
-    if (processing) {
-        return <Loading />
-    }
+    // if (processing) {
+    //     return <Loading />
+    // }
 
 
     const handleSubmit = async (event) => {
@@ -58,49 +58,49 @@ const CheckoutForm = ({ order }) => {
         if (error) {
             setCardError(error?.message || '');
             setSuccess('');
-            setProcessing(true);
+            // setProcessing(true);
 
-            // confirm card payment
-            const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-                clientSecret,
-                {
-                    payment_method: {
-                        card: card,
-                        billing_details: {
-                            name: userName,
-                            email: email,
-                        },
-                    },
-                },
-            );
+        //     // // confirm card payment
+        //     // const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+        //     //     clientSecret,
+        //     //     {
+        //     //         payment_method: {
+        //     //             card: card,
+        //     //             billing_details: {
+        //     //                 name: userName,
+        //     //                 email: email,
+        //     //             },
+        //     //         },
+        //     //     },
+        //     // );
 
-            if (intentError) {
-                setCardError(intentError?.message);
-                setProcessing(false);
-            } else {
-                setCardError('');
-                setTransactionId(paymentIntent.id);
-                setSuccess('Congrats! Your payment is completed.');
+        //     // if (intentError) {
+        //     //     setCardError(intentError?.message);
+        //     //     setProcessing(false);
+        //     // } else {
+        //     //     setCardError('');
+        //     //     setTransactionId(paymentIntent.id);
+        //     //     setSuccess('Congrats! Your payment is completed.');
 
-                // //store payment on database
-                // const payment = {
-                //     booking: _id,
-                //     transactionId: paymentIntent.id
-                // }
+        //         // //store payment on database
+        //         // const payment = {
+        //         //     booking: _id,
+        //         //     transactionId: paymentIntent.id
+        //         // }
 
-                // fetch(`http://localhost:5000/order/${_id}`, {
-                //     method: 'PATCH',
-                //     headers: {
-                //         'content-type': 'application/json',
-                //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                //     },
-                //     body: JSON.stringify(payment)
-                // }).then(res => res.json())
-                // .then(data => {
-                //     console.log(data);
-                //     setProcessing(false)
-                // })
-            }
+        //         // fetch(`http://localhost:5000/order/${_id}`, {
+        //         //     method: 'PATCH',
+        //         //     headers: {
+        //         //         'content-type': 'application/json',
+        //         //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        //         //     },
+        //         //     body: JSON.stringify(payment)
+        //         // }).then(res => res.json())
+        //         // .then(data => {
+        //         //     console.log(data);
+        //         //     setProcessing(false)
+        //         // })
+        //     // }
         }
 
     };
@@ -134,12 +134,12 @@ const CheckoutForm = ({ order }) => {
             {
                 cardError && <p className='text-red-700'>{cardError}</p>
             }
-            {
+            {/* {
                 success && <div className='text-green-500'>
                     <p>{success}  </p>
                     <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
                 </div>
-            }
+            } */}
         </>
     );
 };

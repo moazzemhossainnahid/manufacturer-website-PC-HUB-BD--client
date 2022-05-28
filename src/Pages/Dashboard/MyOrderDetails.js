@@ -64,8 +64,8 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
                 then my server site crushed again and again..i try to solve this but dont do it..
                 thats why i commented this button at last moment...please check my code for payment method */}
 
-                {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>}
-                {/* <button class="btn btn-accent">Pay</button> */}
+                {/* {!paid ? <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-primary">Pay</button></Link> : <div class="badge badge-accent">Paid</div>} */}
+                <button class="btn btn-accent">Pay</button>
                 <button onClick={() => handleDeleteOrder(`${_id}`)} class="btn btn-gray-500">Delete</button>
             </div>
             </div>

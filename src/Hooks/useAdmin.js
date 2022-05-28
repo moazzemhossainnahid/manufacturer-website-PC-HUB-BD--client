@@ -7,7 +7,7 @@ const useAdmin = () => {
     const {user} = useFirebase()
     useEffect( () => {
         const email = user?.email;
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://pc-hub-bd.herokuapp.com/user/admin/${email}`, {
             method: 'GET',
             headers: {
                 'content-type' : 'application/json',

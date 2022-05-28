@@ -6,7 +6,7 @@ import ShowBlogs from './ShowBlogs';
 const Blogs = () => {
 
 
-    const { data: blogs, isLoading } = useQuery('blogs', () => fetch('http://localhost:5000/blogs').then(res => res.json()))
+    const { data: blogs, isLoading } = useQuery('blogs', () => fetch('https://pc-hub-bd.herokuapp.com/blogs').then(res => res.json()))
 
     if (isLoading) {
         return <Loading />

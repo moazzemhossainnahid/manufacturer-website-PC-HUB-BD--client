@@ -18,7 +18,7 @@ const MyReviewDetails = ({rview, setReviews, reviews}) => {
           .then((willDelete) => {
             if (willDelete) {
                 
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://pc-hub-bd-server.vercel.app/review/${id}`, {
                 method: 'DELETE',
                 headers: {
                     "content-type" : "application/json",

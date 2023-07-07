@@ -5,7 +5,7 @@ import Product from './Product';
 const Products = () => {
     const [products, setProducts] = useState([]);
     useEffect( () => {
-        axios.get(`http://localhost:5000/products`)
+        axios.get(`https://pc-hub-bd-server.vercel.app/products`)
         .then(data => setProducts(data.data))
     }, []);
     return (

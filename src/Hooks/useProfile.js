@@ -8,7 +8,7 @@ const useProfile = (email) => {
     // const email = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profile/${email}`)
+        fetch(`https://pc-hub-bd-server.vercel.app/profile/${email}`)
         .then(res => res.json())
         .then(data => setProfile(data))
     }, [email]);

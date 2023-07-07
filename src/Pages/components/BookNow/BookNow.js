@@ -12,7 +12,7 @@ const BookNow = () => {
     const { user } = useFirebase();
     const { register, handleSubmit, reset } = useForm();
     useEffect(() => {
-        axios.get(`http://localhost:5000/product/${id}`)
+        axios.get(`https://pc-hub-bd-server.vercel.app/product/${id}`)
             .then(data => setProduct(data.data))
     }, [id]);
 
@@ -56,7 +56,7 @@ const BookNow = () => {
             .then((willDelete) => {
                 if (willDelete) {
 
-                    fetch(`http://localhost:5000/orders`, {
+                    fetch(`https://pc-hub-bd-server.vercel.app/orders`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

@@ -10,7 +10,7 @@ const HomeProducts = () => {
     const homeProducts = products.slice(0,6);
     const navigate = useNavigate();
     useEffect( () => {
-        axios.get(`http://localhost:5000/products`)
+        axios.get(`https://pc-hub-bd-server.vercel.app/products`)
         .then(data => setProducts(data.data))
     }, []);
     return (

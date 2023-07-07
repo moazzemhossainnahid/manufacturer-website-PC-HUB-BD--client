@@ -7,7 +7,7 @@ const AllOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/orders')
+        axios.get('https://pc-hub-bd-server.vercel.app/orders')
             .then(data => {
                 setOrders(data.data);
             })

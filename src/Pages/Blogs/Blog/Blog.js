@@ -7,7 +7,7 @@ const Blog = () => {
     const [blog, setBlog] = useState();
 
     useEffect( () => {
-        axios.get(`http://localhost:5000/blog/${id}`)
+        axios.get(`https://pc-hub-bd-server.vercel.app/blog/${id}`)
         .then(data => setBlog(data.data))
     },[id]);
 

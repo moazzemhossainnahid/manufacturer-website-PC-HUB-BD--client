@@ -11,7 +11,7 @@ const MyReview = () => {
     const email = user?.email;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/reviews/${email}`)
+        axios.get(`https://pc-hub-bd-server.vercel.app/reviews/${email}`)
             .then(data => {
                 setReviews(data.data);
             })

@@ -11,7 +11,7 @@ const UpdateProductDetails = () => {
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 
     useEffect( () => {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://pc-hub-bd-server.vercel.app/product/${id}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setProduct(data))
@@ -48,7 +48,7 @@ const UpdateProductDetails = () => {
                 // console.log(product);
 
                     // Update to database
-                    fetch(`http://localhost:5000/updateproduct/${id}`, {
+                    fetch(`https://pc-hub-bd-server.vercel.app/updateproduct/${id}`, {
                         method: 'PUT',
                         headers: {
                             "content-type" : "application/json",

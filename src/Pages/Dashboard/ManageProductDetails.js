@@ -23,7 +23,7 @@ const handleDeleteProduct = (id) => {
       .then((willDelete) => {
         if (willDelete) {
             
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://pc-hub-bd-server.vercel.app/product/${id}`, {
             method: 'DELETE',
             headers: {
                 "content-type" : "application/json",

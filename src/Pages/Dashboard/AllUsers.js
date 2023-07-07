@@ -5,7 +5,7 @@ import UsersRow from './UsersRow';
 
 const AllUsers = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users',
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://pc-hub-bd-server.vercel.app/users',
     {
         method: 'GET',
         headers: {

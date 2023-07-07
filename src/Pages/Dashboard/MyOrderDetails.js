@@ -21,7 +21,7 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
           .then((willDelete) => {
             if (willDelete) {
                 
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://pc-hub-bd-server.vercel.app/order/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

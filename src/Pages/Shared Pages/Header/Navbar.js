@@ -11,7 +11,7 @@ import useProfile from '../../../Hooks/useProfile';
 const Navbar = ({ children }) => {
     const [clicked, setClicked] = useState(false);
     const { user, handleSignOut } = useFirebase();
-    const [profile] = useProfile();
+    // const {profile} = useProfile();
     const navigate = useNavigate();
 
     return (
@@ -75,7 +75,7 @@ const Navbar = ({ children }) => {
                                     <div className="dropdown dropdown-end">
                                         <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                                             <div className="w-10 rounded-full">
-                                                <img src={user?.photoURL ? user?.photoURL : avater || profile?.photoURL ? profile?.photoURL : avater} alt="" className="" />
+                                                <img src={user?.photoURL ? user?.photoURL : avater} alt="" className="" />
 
                                             </div>
                                         </label>
@@ -111,7 +111,7 @@ const Navbar = ({ children }) => {
                             <div className="dropdown dropdown-end">
                                 <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                    <img src={user?.photoURL ? user?.photoURL : avater || profile?.photoURL ? profile?.photoURL : avater} alt="" className="" />
+                                    <img src={user?.photoURL ? user?.photoURL : avater} alt="" className="" />
 
                                     </div>
                                 </label>

@@ -7,7 +7,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        axios.get('https://pc-hub-bd.herokuapp.com/reviews')
+        axios.get('http://localhost:5000/reviews')
             .then(data => {
                 setReviews(data.data);
             })

@@ -7,7 +7,7 @@ const Blog = () => {
     const [blog, setBlog] = useState();
 
     useEffect( () => {
-        axios.get(`https://pc-hub-bd.herokuapp.com/blog/${id}`)
+        axios.get(`http://localhost:5000/blog/${id}`)
         .then(data => setBlog(data.data))
     },[id]);
 

@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L3TaVKQApjCPl5WWUHVzWyDMFjNTNqz4ICJG
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `https://pc-hub-bd.herokuapp.com/order/${id}`;
+    const url = `http://localhost:5000/order/${id}`;
 
     const {data: order, isLoading} = useQuery(['booking', id], () => fetch(url, {
         method: 'GET',

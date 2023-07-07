@@ -11,7 +11,7 @@ const UpdateProductDetails = () => {
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 
     useEffect( () => {
-        const url = `https://pc-hub-bd.herokuapp.com/product/${id}`;
+        const url = `http://localhost:5000/product/${id}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setProduct(data))
@@ -48,7 +48,7 @@ const UpdateProductDetails = () => {
                 // console.log(product);
 
                     // Update to database
-                    fetch(`https://pc-hub-bd.herokuapp.com/updateproduct/${id}`, {
+                    fetch(`http://localhost:5000/updateproduct/${id}`, {
                         method: 'PUT',
                         headers: {
                             "content-type" : "application/json",

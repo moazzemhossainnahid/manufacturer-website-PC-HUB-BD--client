@@ -5,7 +5,7 @@ import UsersRow from './UsersRow';
 
 const AllUsers = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://pc-hub-bd.herokuapp.com/users',
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users',
     {
         method: 'GET',
         headers: {

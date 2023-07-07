@@ -5,7 +5,7 @@ import useProfile from '../../../Hooks/useProfile';
 import avater from '../../../images/Avatar.png';
 const Profile = () => {
     const {user, register, handleSubmit, handleUpdateProfile} = useFirebase();
-    const [profile] = useProfile(user?.email);
+    const {profile} = useProfile(user?.email);
 
     
     return (

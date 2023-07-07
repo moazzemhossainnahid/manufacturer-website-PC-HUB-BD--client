@@ -21,7 +21,7 @@ const MyOrderDetails = ({order, orders, setOrders}) => {
           .then((willDelete) => {
             if (willDelete) {
                 
-            fetch(`https://pc-hub-bd.herokuapp.com/order/${id}`, {
+            fetch(`http://localhost:5000/order/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

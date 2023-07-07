@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
     const { _id, userName, email, orderValue } = order;
 
     useEffect(() => {
-        fetch("https://pc-hub-bd.herokuapp.com/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -88,7 +88,7 @@ const CheckoutForm = ({ order }) => {
         //         //     transactionId: paymentIntent.id
         //         // }
 
-        //         // fetch(`https://pc-hub-bd.herokuapp.com/order/${_id}`, {
+        //         // fetch(`http://localhost:5000/order/${_id}`, {
         //         //     method: 'PATCH',
         //         //     headers: {
         //         //         'content-type': 'application/json',

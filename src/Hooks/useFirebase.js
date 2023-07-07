@@ -155,7 +155,7 @@ const useFirebase = () => {
                     }
 
                     // send to database
-                    fetch(`https://pc-hub-bd.herokuapp.com/profile/${email}`, {
+                    fetch(`http://localhost:5000/profile/${email}`, {
                         method: 'PUT',
                         headers: {
                             "content-type": "application/json",
